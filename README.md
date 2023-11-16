@@ -2,4 +2,4 @@
 
 Course Materials for Interactive Stories @ Visual Communication @ Bezalel
 
-\_
+\_(:)
