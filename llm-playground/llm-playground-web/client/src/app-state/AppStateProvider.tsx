@@ -4,7 +4,7 @@ import storyConfig from '../story/story-config';
 
 export type Message = {
     role: 'system' | 'user' | 'assistant',
-    content: string
+    content: string,
 }
 
 type AppState = {

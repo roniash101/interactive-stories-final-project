@@ -21,22 +21,34 @@ export function useHandleStoryResponse() {
         //     newMessages.push({ role: 'system', content: `Your next storyText output has maximum length of ${newMessage} words.` })
         // }
 
+        console.log("response", response);
+
+        if (response.userLineToneVerb) {
+            newMessages.push({ role: 'assistant', content: ", " + response.userLineToneVerb + " Koby." });
+        }
+
         if (response.storyText) {
             newMessages.push({ role: 'assistant', content: response.storyText });
         }
 
+        if (response.KobyInnerDialogue) { 
+
+            newMessages.push({ role: 'assistant', content: response.KobyInnerDialogue });
+        }
+
+        if (response.storyEvent) {
+            newMessages.push({ role: 'assistant', content: response.storyEvent });
+        }
+
         setAppState({ messages: [...newMessages] });
 
-        // TODO: end story with a long closing paragraph, and 'THE END' message.
-        console.log('goal progress: ', response.goalProgress);
-
         // If the player is idle for a long period, add some content or a hint to push the story forward.
-        idleTimer.current = new Timer(15000, () => {
-            if (response.storyEvent && Math.random() > 0.7) {
-                // Trigger an independent story event:
-                newMessages.push({ role: 'assistant', content: response.storyEvent });
-                setAppState({ messages: [...newMessages] });
-            }
+        idleTimer.current = new Timer(3000, () => {
+            // if (response.storyEvent && Math.random() > 0.7) {
+            //     // Trigger an independent story event:
+            //     newMessages.push({ role: 'assistant', content: response.storyEvent });
+            //     setAppState({ messages: [...newMessages] });
+            // }
 
             if (response.callToAction) {
                 // Apply call to action hint:
