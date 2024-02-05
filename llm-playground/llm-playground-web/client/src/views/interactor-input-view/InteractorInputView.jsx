@@ -53,8 +53,8 @@ export default function InteractorInputView() {
                 opacity: status === 'loading' ? 0.3 : 1,
                 pointerEvents: status === 'loading' ? 'none' : 'auto',
                 color: status === 'error' ? 'red' : 'auto'
-            }}
-        >
+            }}>
+                <span>Koby:</span>
             <input
                 id="interactor-text-input"
                 value={inputMessage}

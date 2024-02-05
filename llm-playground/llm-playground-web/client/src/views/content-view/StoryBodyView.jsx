@@ -20,13 +20,22 @@ export default function StoryBodyView() {
             <div id="text-column-cont">
                 {messages.map((msg, i) => {
                     if (msg.role === 'system') return null;
-                    return (<p
-                        key={'msg' + i}
-                        className={`message-${msg.role}`}
-                    >
-                        {msg.content}
-                    </p>
-                    )
+
+                    if (msg.role == 'user') {
+                        return (
+                            <span key={'msg' + i} className={`message-${msg.role}`}>
+                                <br/>
+                                <br/>
+                                "{msg.content}"
+                            </span>)
+                    }
+
+                    return (
+                        <span key={'msg' + i} className={`message-${msg.role}`}>
+                            {!(messages[i-1].role == 'user') && <><br/><br/></>}
+                            {msg.content}
+                        </span>)
+
                 })}
                 {
                     status === 'loading' && <LoadingDots />

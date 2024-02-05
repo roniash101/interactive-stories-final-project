@@ -18,7 +18,7 @@
 
 .message-assistant {
     color: #666;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .message-user {
