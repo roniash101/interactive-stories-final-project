@@ -43,7 +43,7 @@ export function useHandleStoryResponse() {
         setAppState({ messages: [...newMessages] });
 
         // If the player is idle for a long period, add some content or a hint to push the story forward.
-        idleTimer.current = new Timer(3000, () => {
+        idleTimer.current = new Timer(10000, () => {
             // if (response.storyEvent && Math.random() > 0.7) {
             //     // Trigger an independent story event:
             //     newMessages.push({ role: 'assistant', content: response.storyEvent });

@@ -8,6 +8,7 @@ export default function InteractorInputView() {
 
     const { messages, status, inputMessage } = useAppState();
     const setAppState = useSetAppState();
+    const [isEnd, setIsEnd] = useState(false);
 
 
     const handleResponse = useHandleStoryResponse();
@@ -36,6 +37,13 @@ export default function InteractorInputView() {
                 setAppState({ status: 'idle' });
                 handleResponse(newMessages, storytellerResponse);
 
+                if (storytellerResponse.currentKeyGoal) { // check if end
+                    if (storytellerResponse.currentKeyGoal.index >= 3 && storytellerResponse.currentKeyGoal.isCompleted) {
+                        setIsEnd(true);
+                    }
+                }
+
+
             } catch { err => { throw err } }
         }).catch(err => {
             console.error('Api error. Details: ', err);
@@ -43,7 +51,6 @@ export default function InteractorInputView() {
         })
 
     }, [messages, inputMessage]);
-
 
 
     return (
@@ -54,14 +61,17 @@ export default function InteractorInputView() {
                 pointerEvents: status === 'loading' ? 'none' : 'auto',
                 color: status === 'error' ? 'red' : 'auto'
             }}>
-                <span>Koby:</span>
-            <input
-                id="interactor-text-input"
-                value={inputMessage}
-                onKeyDown={e => { if (e.key === 'Enter') send() }}
-                onChange={e => setAppState({ inputMessage: e.target.value })}
-            />
-            <button onClick={send}>Send</button>
+            {isEnd ? <span>The End.</span> :
+                <>
+                    <span>Koby:</span>
+                    <input
+                        id="interactor-text-input"
+                        value={inputMessage}
+                        onKeyDown={e => { if (e.key === 'Enter') send() }}
+                        onChange={e => setAppState({ inputMessage: e.target.value })}
+                    />
+                    <button onClick={send}>Send</button>
+                </>}
             {
                 status === 'error' && 'Something is broken 😵‍💫'
             }
