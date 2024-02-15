@@ -1,5 +1,44 @@
 .character-view {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    position: relative;
+
+    .character {
+        height: 85%;
+    }
+
+    .bubbles {
+        position: absolute;
+        max-width: 23rem;
+        height: 100%;
+        z-index: 1;
+
+        .speaking-bubble {
+            width: 8rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .thinking-bubble {
+            width: 8rem;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            -webkit-transform: scale(-1, -1) translate(0, 100%);
+            transform: scale(-1, -1) translate(0, 100%);
+        }
+    }
+
+    .flip-horizontally {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+
+    }
+
+    .flip-vertically {
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+    }
 }

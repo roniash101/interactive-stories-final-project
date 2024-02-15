@@ -16,12 +16,12 @@
     }
 
     .content {
-        flex-grow: 8;
+        // flex-grow: 8;
         display: flex;
         justify-content: space-evenly;
-        align-items: stretch;
+        // align-items: stretch;
 
-        div {
+        .character-view {
             flex-grow: 1;
             text-align: center;
             border: 2px solid black;
