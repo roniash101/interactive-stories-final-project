@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import CharacterView from "../character-view/CharacterView";
+import { Characters } from "../character-view/CharacterView";
 import "./ContentView.scss";
 
 const ContentView = () => {
@@ -7,9 +9,10 @@ const ContentView = () => {
         <div className="content-view">
             <div className="topper">Scene Description</div>
             <div className="content">
-                <div>Charcter1</div>
-                {/* <div>Charcter2</div>
-                <div>Charcter3</div> */}
+                <CharacterView name={Characters.Lilach.name} />
+                <CharacterView name={Characters.Smadar.name} />
+                <CharacterView name={Characters.Galit.name} />
+                <CharacterView name={Characters.Barak.name} />
             </div>
             <div className="footer">
                 <input/>
