@@ -1,12 +1,32 @@
 .character-view {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    // align-items: flex-end;
     position: relative;
+    // min-height: 10rem;
+    min-width: 23rem;
+    overflow: hidden;
 
-    .character {
-        height: 85%;
+    // .character {
+    //     height: 85%;
+    // }
+
+    .character-parent {
+        position: absolute;
+        max-width: 23rem;
+        height: 100%;
+        
+        .character {
+            padding-top: 3rem;
+            // background-color: red;
+            // height: 70vh;
+            // position: absolute;
+            // top: 0;
+            // -webkit-transform: translate(-50%, 0);
+            // transform: translate(-50%, 0);
+        }
     }
+
 
     .bubbles {
         position: absolute;
@@ -24,10 +44,10 @@
         .thinking-bubble {
             width: 8rem;
             position: absolute;
-            bottom: 0;
+            top: 0;
             right: 0;
-            -webkit-transform: scale(-1, -1) translate(0, 100%);
-            transform: scale(-1, -1) translate(0, 100%);
+            -webkit-transform: scale(-1, 1) translate(25%, 0);
+            transform: scale(-1, 1) translate(25%, 0);
         }
     }
 

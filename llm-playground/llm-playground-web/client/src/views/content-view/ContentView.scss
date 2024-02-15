@@ -12,13 +12,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #ffb703;
         border: 2px solid black;
     }
 
     .content {
-        // flex-grow: 8;
+        flex-grow: 8;
+        // height: 80vh;
         display: flex;
+        flex-direction: row;
         justify-content: space-evenly;
+        flex-wrap: wrap-reverse;
         // align-items: stretch;
 
         .character-view {
@@ -34,6 +38,7 @@
         justify-content: center;
         align-items: center;
         justify-content: space-evenly;
+        background-color: #219ebc;
         border: 2px solid black;
     }
 }

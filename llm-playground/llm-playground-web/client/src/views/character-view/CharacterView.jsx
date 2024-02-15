@@ -11,26 +11,26 @@ import { useEffect, useState } from "react";
 export const Characters = {
     Lilach: {
         name: "Lilach",
-        image: Character1,
-        backgroundColor: "red",
+        image: Character3,
+        backgroundColor: "#ccd5ae",
         isMain: true
     },
     Smadar: {
         name: "Smadar",
         image: Character2,
-        backgroundColor: "blue",
-        isMain: false
-    },
-    Barak: {
-        name: "Barak",
-        image: Character3,
-        backgroundColor: "yellow",
+        backgroundColor: "#fefae0",
         isMain: false
     },
     Galit: {
         name: "Galit",
         image: Character4,
-        backgroundColor: "green",
+        backgroundColor: "#f8ad9d",
+        isMain: false
+    },
+    Barak: {
+        name: "Barak",
+        image: Character1,
+        backgroundColor: "#faedcd",
         isMain: false
     }
 };
@@ -38,13 +38,16 @@ export const Characters = {
 const CharacterView = (props) => {
 
     const { name } = props;
+    const chatacter = Characters[name];
 
     return (
-        <div className="character-view" style={{ "backgroundColor": Characters[name].backgroundColor }}>
-            <img className="character" src={Characters[name].image} />
+        <div className="character-view" style={{ "backgroundColor": chatacter.backgroundColor }}>
+            <div className="character-parent">
+                <img className="character" src={chatacter.image} />
+            </div>
             <div className="bubbles">
                 <img className="speaking-bubble" src={SpeakingBubble} />
-                <img className="thinking-bubble" src={ThinkingBubble} />
+                {chatacter.isMain && <img className="thinking-bubble" src={ThinkingBubble} />}
             </div>
         </div>
     );
