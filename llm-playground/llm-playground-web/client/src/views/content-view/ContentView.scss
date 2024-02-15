@@ -1,0 +1,39 @@
+.content-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: 100vh;
+    width: 100vw;
+    border: 2px solid black;
+
+    .topper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+    }
+
+    .content {
+        flex-grow: 8;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: stretch;
+
+        div {
+            flex-grow: 1;
+            text-align: center;
+            border: 2px solid black;
+        }
+    }
+
+    .footer {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 2px solid black;
+    }
+}

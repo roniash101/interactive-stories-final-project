@@ -31,7 +31,7 @@ export function useHandleStoryResponse() {
             newMessages.push({ role: 'assistant', content: response.storyText });
         }
 
-        if (response.KobyInnerDialogue) { 
+        if (response.KobyInnerDialogue) {
 
             newMessages.push({ role: 'assistant', content: response.KobyInnerDialogue });
         }
@@ -50,10 +50,13 @@ export function useHandleStoryResponse() {
             //     setAppState({ messages: [...newMessages] });
             // }
 
-            if (response.callToAction) {
-                // Apply call to action hint:
-                newMessages.push({ role: 'assistant', content: `(${response.callToAction})` });
-                setAppState({ messages: [...newMessages] });
+            if (response.currentKeyGoalIndex < 3 || (response.currentKeyGoalIndex == 3 && !response.isCurrentKeyGoalCompleted)) {
+
+                if (response.callToAction) {
+                    // Apply call to action hint:
+                    newMessages.push({ role: 'assistant', content: `(${response.callToAction})` });
+                    setAppState({ messages: [...newMessages] });
+                }
             }
         });
         idleTimer.current.start();

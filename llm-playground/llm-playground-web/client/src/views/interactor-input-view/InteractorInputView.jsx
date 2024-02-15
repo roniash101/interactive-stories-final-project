@@ -37,12 +37,9 @@ export default function InteractorInputView() {
                 setAppState({ status: 'idle' });
                 handleResponse(newMessages, storytellerResponse);
 
-                if (storytellerResponse.currentKeyGoal) { // check if end
-                    if (storytellerResponse.currentKeyGoal.index >= 3 && storytellerResponse.currentKeyGoal.isCompleted) {
-                        setIsEnd(true);
-                    }
+                if (storytellerResponse.currentKeyGoalIndex >= 3 && storytellerResponse.isCurrentKeyGoalCompleted) {
+                    setIsEnd(true);
                 }
-
 
             } catch { err => { throw err } }
         }).catch(err => {
@@ -63,12 +60,13 @@ export default function InteractorInputView() {
             }}>
             {isEnd ? <span>The End.</span> :
                 <>
-                    <span>Koby:</span>
+                    <span style={{color: "#0c1b71"}}>Koby:</span>
                     <input
                         id="interactor-text-input"
                         value={inputMessage}
                         onKeyDown={e => { if (e.key === 'Enter') send() }}
                         onChange={e => setAppState({ inputMessage: e.target.value })}
+                        autoComplete="off"
                     />
                     <button onClick={send}>Send</button>
                 </>}

@@ -8,8 +8,14 @@ const STORY_CONFIG_1 = {
         
         Provide your output in JSON format of this scheme:
         {         
-            // JSON, Current key goal that the system tries to achieve
-            "currentKeyGoal": {"index:" 0, "description": "", "isCompleted": false },
+            // int, the index of the current key goal that the system is trying to achieve.
+            "currentKeyGoalIndex": 0,
+
+            // string, the description of the current key goal that the system is trying to achieve.
+            "currentKeyGoalDescription": "",
+
+            // boolean, if the current key goal has been achieved.
+            "isCurrentKeyGoalCompleted": false,
             
             // string, a past-tense verb describing the tone of the previous line given by the user (which is the dialouge of Koby), such as 'said', 'yelled', 'wispered' etc.
             "userLineToneVerb": "",
@@ -23,6 +29,7 @@ const STORY_CONFIG_1 = {
 
             // string, represents the inner dialouge in Koby's mind in response to the given "storyText".
             // The inner dialouge is over dramatic but uses a simple language.
+            // The inner dialouge should be vivid and display Koby's complex inner world that includes a big range of feelings: anger, happines, love, disappointment etc.
             // The dialouge has the word "Koby" explicitly at the begining and refers to Koby as third person - "his", "him" etc.
             "KobyInnerDialogue": ""
             
@@ -34,6 +41,7 @@ const STORY_CONFIG_1 = {
             // Use a suggestive tone (e.g. start with "You can ..." or "You might ...").
             // Don't be to obvious and don't tell the user what he needs to do.
             // The suggestion should be ambiguous and point at the general direction.
+            // The call to action should not be to explicit or reveal the current key goal.
             // Don't suggest passive actions.
             // Use simple words.
             "callToAction": "",
@@ -45,6 +53,7 @@ const STORY_CONFIG_1 = {
         "storyText" maximum length is 20 words. It can be changed by a system message.
         "callToAction" maximum lenghth is always 10 words.
         "storyEvent" maximum length is 50 words.
+        "KobyInnerDialogue" minimum 40 words.
 
         Base your output on the following backstory, force the plot to go on as described in the backstory.
         If the user say something unpredictible as Koby, hint him gently to say something else without ruinig the story's flow.
@@ -99,13 +108,18 @@ const STORY_CONFIG_1 = {
         ["Koby orders pasta (his regular) and not something else",
         "Koby offres to buy Shira's pasta",
         "Koby challenges Shira to a game",
-        "Koby offers Shira to share the pasta with him"]
+        "Koby explicitly offers Shira to share the pasta with him"]
 
         notes: 
         -Shimon is out of pasta and can't give it to Koby no matter what.
         -Shimon is impatient and keeps asking Koby if he wants to order something else.
-        -First Koby notices the last dish of pasta and only after he askes about it he finds out it belongs to Shira.
-        -Throughout the story Koby falls in love with Shira, will he give up the pasta for her?
+        -Koby argues a little bit with Shimon before noticing the last dish of pasta.
+        -First Koby notices the last dish of pasta and only after he askes about it he finds out it belongs to someone else.
+        -Throughout the story Koby slowly falls in love with Shira and debates what is  more important, impressing her or getting the pasta?
+        -The game should unfold fast, without asking the user for moves
+        -When the game ends Koby is announced as the winner and Shira hands him the pasta as a prize
+        -After Koby wins he has an inner conflict, should he give up on he pasta for shira?
+        -After Koby offers to share the pasta Shira smiles and the chemestry between them rises up
     `,
     openingLine: `You are Koby. You stand at the front of the line at the Fabiola - 
     the cafeteria located in the computer science building on the campus of the Hebrew University in Givat Ram.
