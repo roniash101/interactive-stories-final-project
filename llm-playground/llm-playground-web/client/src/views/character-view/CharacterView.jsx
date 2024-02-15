@@ -45,7 +45,7 @@ const CharacterView = (props) => {
             <div className="character-parent">
                 <img className="character" src={chatacter.image} />
             </div>
-            <div className="bubbles">
+            <div className="bubbles-parent">
                 <img className="speaking-bubble" src={SpeakingBubble} />
                 {chatacter.isMain && <img className="thinking-bubble" src={ThinkingBubble} />}
             </div>

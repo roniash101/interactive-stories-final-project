@@ -1,15 +1,9 @@
 .character-view {
     display: flex;
     justify-content: center;
-    // align-items: flex-end;
     position: relative;
-    // min-height: 10rem;
     min-width: 23rem;
     overflow: hidden;
-
-    // .character {
-    //     height: 85%;
-    // }
 
     .character-parent {
         position: absolute;
@@ -18,17 +12,10 @@
         
         .character {
             padding-top: 3rem;
-            // background-color: red;
-            // height: 70vh;
-            // position: absolute;
-            // top: 0;
-            // -webkit-transform: translate(-50%, 0);
-            // transform: translate(-50%, 0);
         }
     }
 
-
-    .bubbles {
+    .bubbles-parent {
         position: absolute;
         max-width: 23rem;
         height: 100%;
