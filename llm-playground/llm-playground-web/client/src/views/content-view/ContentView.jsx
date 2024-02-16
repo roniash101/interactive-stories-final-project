@@ -1,27 +1,31 @@
-import { useEffect, useRef } from "react";
-import CharacterView from "../character-view/CharacterView";
+import { useState } from "react";
+import SceneView from "../scene-view/SceneView";
+import FooterButton from "../../components/FooterButton";
 import { Characters } from "../character-view/CharacterView";
 import "./ContentView.scss";
 
 const ContentView = () => {
+    const [participants, setParticipants] = useState(["Lilach"]);
+
+    const onButtonClick = (name) => {
+        setParticipants([...participants, name]);
+    }
 
     return (
         <div className="content-view">
-            <div className="topper">Scene Description</div>
-            <div className="content">
-                <div className="temp">
-                    <CharacterView name={Characters.Lilach.name} />
-                    {/* <CharacterView name={Characters.Smadar.name} /> */}
-                </div>
-                {/* <div className="temp"> */}
-                    {/* <CharacterView name={Characters.Galit.name} /> */}
-                    {/* <CharacterView name={Characters.Barak.name} /> */}
-                {/* </div> */}
-            </div>
+            <div className="topper">Scene Description...</div>
+
+            <SceneView participants={participants} />
+
             <div className="footer">
-                <input />
-                <div>Call</div>
-                <div>Hang up</div>
+                {Object.keys(Characters).map((name, i) => (
+                    !Characters[name].isMain ?
+                        <FooterButton
+                            value={name}
+                            key={i}
+                            array={participants}
+                            setArray={setParticipants} /> : null
+                ))}
             </div>
         </div>
     );
