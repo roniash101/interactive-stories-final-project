@@ -1,0 +1,42 @@
+.bubbles-parent {
+    position: absolute;
+    max-width: 23rem;
+    height: 100%;
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .bubble {
+        min-width: 6rem;
+        max-width: 10rem;
+        position: absolute;
+        top: 1rem;
+        background-color: white;
+
+        .text {
+            line-height: 1em;
+            margin: 0.25em;
+            font-size: 0.9em;
+        }
+
+        textarea {
+            margin: 0.25em;
+            border: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+    }
+
+    .speaking-bubble {
+        left: 5rem;
+        border: black solid 3px;
+    }
+
+    .thinking-bubble {
+        right: 5rem;
+        border: black dashed 2px;
+    }
+}

@@ -15,28 +15,28 @@
         }
     }
 
-    .bubbles-parent {
-        position: absolute;
-        max-width: 23rem;
-        height: 100%;
-        z-index: 1;
+    // .bubbles-parent {
+    //     position: absolute;
+    //     max-width: 23rem;
+    //     height: 100%;
+    //     z-index: 1;
 
-        .speaking-bubble {
-            width: 8rem;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+    //     .speaking-bubble {
+    //         width: 8rem;
+    //         position: absolute;
+    //         top: 0;
+    //         left: 0;
+    //     }
 
-        .thinking-bubble {
-            width: 8rem;
-            position: absolute;
-            top: 0;
-            right: 0;
-            -webkit-transform: scale(-1, 1) translate(25%, 0);
-            transform: scale(-1, 1) translate(25%, 0);
-        }
-    }
+    //     .thinking-bubble {
+    //         width: 8rem;
+    //         position: absolute;
+    //         top: 0;
+    //         right: 0;
+    //         -webkit-transform: scale(-1, 1) translate(25%, 0);
+    //         transform: scale(-1, 1) translate(25%, 0);
+    //     }
+    // }
 
     .flip-horizontally {
         -webkit-transform: scaleX(-1);
