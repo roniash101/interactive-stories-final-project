@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
-import "./interactor-input-styles.css";
 import { SETTINGS } from "../../../settings";
 import { useHandleStoryResponse } from "../../story/story-logic";
+import "./interactor-input.css";
 
-export default function InteractorInputView() {
+export default function InteractorInput() {
 
+    const [isDisabled, setIsDisabled] = useState(false);
     const { messages, status, inputMessage } = useAppState();
     const setAppState = useSetAppState();
     const [isEnd, setIsEnd] = useState(false);
-
 
     const handleResponse = useHandleStoryResponse();
 
@@ -17,7 +17,7 @@ export default function InteractorInputView() {
 
         const newMessages = [...messages, { role: 'user', content: inputMessage }];
 
-        setAppState({ messages: newMessages, status: 'loading', inputMessage: '' });
+        setAppState({ messages: newMessages, status: 'loading' }); // todo: inputMessage: ''
 
         fetch(
             `${SETTINGS.SERVER_URL}/story-completions`,
@@ -49,29 +49,36 @@ export default function InteractorInputView() {
 
     }, [messages, inputMessage]);
 
+    const onKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setIsDisabled(true);
+            send()
+        }
+    }
 
     return (
         <div
             id="interactor-box"
             style={{
-                opacity: status === 'loading' ? 0.3 : 1,
+                // opacity: status === 'loading' ? 0.3 : 1,
                 pointerEvents: status === 'loading' ? 'none' : 'auto',
                 color: status === 'error' ? 'red' : 'auto'
             }}>
-            {isEnd ? <span>The End.</span> :
+            {isEnd ? <span>The End.</span> : //todo: handle end
                 <>
-                    <span style={{color: "#0c1b71"}}>Koby:</span>
-                    <input
-                        id="interactor-text-input"
+                    <textarea
+                        // id="interactor-text-input"
                         value={inputMessage}
-                        onKeyDown={e => { if (e.key === 'Enter') send() }}
+                        cols="20"
+                        rows="5"
+                        disabled={isDisabled}
+                        style={{ "color": isDisabled ? "black" : "blue" }}
+                        onKeyDown={onKeyDown}
                         onChange={e => setAppState({ inputMessage: e.target.value })}
-                        autoComplete="off"
-                    />
-                    <button onClick={send}>Send</button>
+                        autoComplete="off" />
                 </>}
             {
-                status === 'error' && 'Something is broken 😵‍💫'
+                status === 'error' && 'Something is broken'
             }
         </div>
     )
