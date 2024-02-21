@@ -1,55 +1,42 @@
 import { useEffect, useState } from "react";
+import { useAppState } from "../../app-state/AppStateProvider"
+import Characters from "../../story/Characters";
 import Bubble from "../../components/bubble/Bubble";
-import Character1 from "../../assets/character1.png";
-import Character2 from "../../assets/character2.png";
-import Character3 from "../../assets/character3.png";
-import Character4 from "../../assets/character4.png";
-import SpeakingBubble from "../../assets/speaking-bubble.png";
-import ThinkingBubble from "../../assets/thinking-bubble.png";
+import LoadingDots from "../../components/LoadingDots";
 import "./CharacterView.scss";
 
-
-export const Characters = {
-    Lilach: {
-        name: "Lilach",
-        image: Character3,
-        backgroundColor: "#ccd5ae",
-        isMain: true
-    },
-    Smadar: {
-        name: "Smadar",
-        image: Character2,
-        backgroundColor: "#fefae0",
-        isMain: false
-    },
-    Galit: {
-        name: "Galit",
-        image: Character4,
-        backgroundColor: "#f8ad9d",
-        isMain: false
-    },
-    Barak: {
-        name: "Barak",
-        image: Character1,
-        backgroundColor: "#faedcd",
-        isMain: false
-    }
-};
-
 const CharacterView = (props) => {
-
     const { name } = props;
     const chatacter = Characters[name];
+
+    const { messages, innerDialogue, status } = useAppState();
+    const [text, setText] = useState("I am speaking!"); // todo: move main vs regular handle to bubble
+
+    useEffect(() => {
+        const lastMessage = messages[messages.length - 1];
+        if (lastMessage.role == "assistant") // todo: every message should contain all the roles?  == name
+        {
+            setText(lastMessage.content) // todo: parse chracter's line
+        }
+    }, [messages])
 
     return (
         <div className="character-view" style={{ "backgroundColor": chatacter.backgroundColor }}>
             <div className="character-parent">
                 <img className="character" src={chatacter.image} />
             </div>
+
             {/* <div className="bubbles-parent"> */}
-                <Bubble isModeSpeak={true} />
-                {chatacter.isMain &&
-                    <Bubble isModeSpeak={false} text="I am thinking..." />}
+            {chatacter.isMain ?
+                <>
+                    <Bubble isModeSpeak={true} />
+                    <Bubble isModeSpeak={false} text={innerDialogue} />
+                </>
+                :
+                <>
+                    <Bubble isModeSpeak={true} text={text} />
+                    {status === 'loading' && <LoadingDots /> /*move inside bubble*/ }
+                </>}
             {/* </div> */}
         </div>
     );

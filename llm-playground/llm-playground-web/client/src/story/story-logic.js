@@ -22,25 +22,17 @@ export function useHandleStoryResponse() {
         // }
 
         console.log("response", response);
+        // characterName, characterText, LilachInnerDialogue, callToAction, goalProgress
 
-        if (response.userLineToneVerb) {
-            newMessages.push({ role: 'assistant', content: ", " + response.userLineToneVerb + " Koby." });
+        if (response.characterText) {
+            newMessages.push({ role: 'assistant', content: response.characterText });
         }
 
-        if (response.storyText) {
-            newMessages.push({ role: 'assistant', content: response.storyText });
+        if (response.LilachInnerDialogue) {
+            setAppState({ innerDialogue: response.LilachInnerDialogue });
         }
 
-        if (response.KobyInnerDialogue) {
-
-            newMessages.push({ role: 'assistant', content: response.KobyInnerDialogue });
-        }
-
-        if (response.storyEvent) {
-            newMessages.push({ role: 'assistant', content: response.storyEvent });
-        }
-
-        setAppState({ messages: [...newMessages] });
+        setAppState({ messages: [...newMessages] }); // todo: update scene description?
 
         // If the player is idle for a long period, add some content or a hint to push the story forward.
         idleTimer.current = new Timer(10000, () => {

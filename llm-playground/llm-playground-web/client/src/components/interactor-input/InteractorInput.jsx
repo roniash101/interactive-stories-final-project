@@ -6,7 +6,7 @@ import "./interactor-input.css";
 
 export default function InteractorInput() {
 
-    const [isDisabled, setIsDisabled] = useState(false);
+    // const [isDisabled, setIsDisabled] = useState(false);
     const { messages, status, inputMessage } = useAppState();
     const setAppState = useSetAppState();
     const [isEnd, setIsEnd] = useState(false);
@@ -51,8 +51,21 @@ export default function InteractorInput() {
 
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
-            setIsDisabled(true);
+            // setIsDisabled(true);
             send()
+        }
+    }
+
+    const getTextColor = () => {
+        switch (status) {
+            case 'idle':
+                return 'blue';
+            case 'loading':
+                return 'black';
+            case 'error':
+                return 'red';
+            default:
+                return 'blue';
         }
     }
 
@@ -60,19 +73,17 @@ export default function InteractorInput() {
         <div
             id="interactor-box"
             style={{
-                // opacity: status === 'loading' ? 0.3 : 1,
                 pointerEvents: status === 'loading' ? 'none' : 'auto',
-                color: status === 'error' ? 'red' : 'auto'
+                color: getTextColor()
             }}>
             {isEnd ? <span>The End.</span> : //todo: handle end
                 <>
-                    <textarea
-                        // id="interactor-text-input"
+                    <textarea // todo: prevent resize?
                         value={inputMessage}
                         cols="20"
                         rows="5"
-                        disabled={isDisabled}
-                        style={{ "color": isDisabled ? "black" : "blue" }}
+                        disabled={status === 'loading'}
+                        style={{ "color": getTextColor() }}
                         onKeyDown={onKeyDown}
                         onChange={e => setAppState({ inputMessage: e.target.value })}
                         autoComplete="off" />

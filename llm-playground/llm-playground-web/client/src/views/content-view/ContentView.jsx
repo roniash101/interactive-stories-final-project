@@ -1,10 +1,12 @@
 import { useState } from "react";
 import SceneView from "../scene-view/SceneView";
 import FooterButton from "../../components/FooterButton";
-import { Characters } from "../character-view/CharacterView";
+import Characters from "../../story/Characters";
+import { useAppState } from "../../app-state/AppStateProvider";
 import "./ContentView.scss";
 
 const ContentView = () => {
+    const {sceneDescription} = useAppState();
     const [participants, setParticipants] = useState(["Lilach"]);
 
     const onButtonClick = (name) => {
@@ -13,7 +15,7 @@ const ContentView = () => {
 
     return (
         <div className="content-view">
-            <div className="topper">Scene Description...</div>
+            <div className="topper">{sceneDescription}</div>
 
             <SceneView participants={participants} />
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CharacterView from "../character-view/CharacterView";
-import { Characters } from "../character-view/CharacterView";
+import Characters from "../../story/Characters";
 
 const SceneView = (props) => {
     const { participants } = props;
