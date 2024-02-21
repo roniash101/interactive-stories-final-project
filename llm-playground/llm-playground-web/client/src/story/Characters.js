@@ -14,13 +14,13 @@ export const Characters = {
     },
     Smadar: {
         name: "Smadar",
-        image: Character2,
+        image: Character4, 
         backgroundColor: "#fefae0",
         isMain: false
     },
     Galit: {
         name: "Galit",
-        image: Character4,
+        image: Character2,
         backgroundColor: "#f8ad9d",
         isMain: false
     },

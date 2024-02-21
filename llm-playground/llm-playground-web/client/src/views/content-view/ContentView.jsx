@@ -7,7 +7,7 @@ import "./ContentView.scss";
 
 const ContentView = () => {
     const {sceneDescription} = useAppState();
-    const [participants, setParticipants] = useState(["Lilach"]);
+    const [participants, setParticipants] = useState(["Lilach", "Galit"]); //todo: add phone ring etc..
 
     const onButtonClick = (name) => {
         setParticipants([...participants, name]);

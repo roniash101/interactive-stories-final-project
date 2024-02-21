@@ -28,8 +28,8 @@ export function useHandleStoryResponse() {
             newMessages.push({ role: 'assistant', content: response.characterText });
         }
 
-        if (response.LilachInnerDialogue) {
-            setAppState({ innerDialogue: response.LilachInnerDialogue });
+        if (response.LilachInnerDialogue && response.callToAction) {
+            setAppState({ innerDialogue: response.LilachInnerDialogue + " " + response.callToAction });
         }
 
         setAppState({ messages: [...newMessages] }); // todo: update scene description?

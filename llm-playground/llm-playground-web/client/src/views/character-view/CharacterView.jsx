@@ -10,7 +10,7 @@ const CharacterView = (props) => {
     const chatacter = Characters[name];
 
     const { messages, innerDialogue, status } = useAppState();
-    const [text, setText] = useState("I am speaking!"); // todo: move main vs regular handle to bubble
+    const [text, setText] = useState(''); // todo: move main vs regular handle to bubble
 
     useEffect(() => {
         const lastMessage = messages[messages.length - 1];
@@ -29,7 +29,7 @@ const CharacterView = (props) => {
             {/* <div className="bubbles-parent"> */}
             {chatacter.isMain ?
                 <>
-                    <Bubble isModeSpeak={true} />
+                    <Bubble isModeSpeak={true} enableInput={true} />
                     <Bubble isModeSpeak={false} text={innerDialogue} />
                 </>
                 :

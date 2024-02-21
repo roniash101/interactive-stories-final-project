@@ -6,7 +6,6 @@ import "./interactor-input.css";
 
 export default function InteractorInput() {
 
-    // const [isDisabled, setIsDisabled] = useState(false);
     const { messages, status, inputMessage } = useAppState();
     const setAppState = useSetAppState();
     const [isEnd, setIsEnd] = useState(false);
@@ -17,7 +16,7 @@ export default function InteractorInput() {
 
         const newMessages = [...messages, { role: 'user', content: inputMessage }];
 
-        setAppState({ messages: newMessages, status: 'loading' }); // todo: inputMessage: ''
+        setAppState({ messages: newMessages, status: 'loading'});
 
         fetch(
             `${SETTINGS.SERVER_URL}/story-completions`,
@@ -34,7 +33,7 @@ export default function InteractorInput() {
                 let storytellerResponse = data.choices[0].message.content;
                 storytellerResponse = JSON.parse(storytellerResponse);
 
-                setAppState({ status: 'idle' });
+                setAppState({ status: 'idle',  inputMessage: '' });
                 handleResponse(newMessages, storytellerResponse);
 
                 if (storytellerResponse.currentKeyGoalIndex >= 3 && storytellerResponse.isCurrentKeyGoalCompleted) {
@@ -51,7 +50,6 @@ export default function InteractorInput() {
 
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
-            // setIsDisabled(true);
             send()
         }
     }

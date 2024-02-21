@@ -4,10 +4,10 @@ import ThinkingBubble from "../../assets/thinking-bubble.png";
 import "./Bubble.scss";
 
 const Bubble = (props) => {
-    const { isModeSpeak, text } = props;
+    const { isModeSpeak, enableInput, text } = props;
     const className = isModeSpeak ? "speaking-bubble" : "thinking-bubble";
     const hasText = text != undefined && text != "";
-    const isRender = !(!isModeSpeak && !hasText);
+    const isRender = (hasText || enableInput);
 
     return (
         <div className="bubbles-parent">

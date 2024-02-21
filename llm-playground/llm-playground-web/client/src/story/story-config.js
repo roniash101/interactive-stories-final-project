@@ -14,10 +14,11 @@ const STORY_CONFIG_1 = {
             // string, the text that the character with the characterName (Galit) says.
             // Includes event descriptions and the character's replies for Lilach's previous line.
             // The characterText should not be a line said by Lilach or an action she does.
-            // If possible, the characterText should include a question or a saying that invite Lilach to respond.
             // The characterText should reflect the character's inner traits, temper, attitude and current mood.
             // The characterText should be vivid and display the character's complex range of feelings: anger, happines, love, disappointment etc.
             // The characterText is over dramatic but uses a simple language.
+            // The characterText should invite the user to respond to it, it can include questions.
+            // The characterText should not end in exclametion mark all the time.
             "characterText": "",
 
             // string, represents the inner dialouge in Lilach's mind in response to the given "characterText".
@@ -27,7 +28,7 @@ const STORY_CONFIG_1 = {
             "LilachInnerDialogue": ""
 
             // string, call-to-action or a hint for the player on what to do next.
-            // Use a suggestive tone (e.g. start with "You can ..." or "You might ...").
+            // Refer to the player as first person and se a suggestive tone (e.g. start with "Maybe I should.." or "I might ...").
             // Don't be to obvious and don't tell the user what he needs to do.
             // The suggestion should be ambiguous and point at the general direction.
             // Don't suggest passive actions.
@@ -39,7 +40,7 @@ const STORY_CONFIG_1 = {
         }
 
         You should limit the length of the output texts:
-        "characterText" maximum length is 20 words. It can be changed by a system message.
+        "characterText" maximum length is 40 words. It can be changed by a system message.
         "LilachInnerDialogue" maximum length is 20 words.
         "callToAction" maximum lenghth is always 10 words.
 
@@ -59,17 +60,22 @@ const STORY_CONFIG_1 = {
 
         Also, base your output on the following details about Galit:
         "
+        Galit is very emotional.
         Galit is very angry that Smadar is being egocentric and ruins her birthday.
         Even if they somehow manage to get tickets to the concert, Galit does not want to go if Smadar comes.
         Galit hopes that Lilach could solve the issue.
         Galit is a Drama queen, stubborn, sensitive.
         Galit is not convinced no mattar what.
+        Galit is impatient and pushes Lilach to talk to Smadar and solve the issue.
         "
 
         notes: 
+        -Lilach does not know anything about smadar, barak and the problem with the tickets at the beginnig of the story.
+        -Lilach knows it is Galit's birthday.
+        -Galit does not reveal all the inforamation at once.
+        -The conversation advances slowly. 
         -Insist to make Lilach a hard time and don't let her to relax Galit no matter what. 
         -Besides the tickets that Barak has, all the tickets are sold out and it is impossible to get tickets from another resource (for example, no one is trying to sell his tickets online).
-        -Galit is impatient and pushes Lilach to talk to Smadar and solve the issue.
     `,
     sceneDescription:
     `
