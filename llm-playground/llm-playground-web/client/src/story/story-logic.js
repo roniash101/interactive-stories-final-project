@@ -12,6 +12,11 @@ export function useSendMessage(onSent) {
 
         console.log("message", message);
 
+        let reminder = message.role == 'user' ? `\n Reminder: This is a user message, respond with the right JSON scheme.`
+            : `\n Reminder: This is a system message, respond with {"OK": true},`;
+
+        message.content += reminder;
+
         const newMessages = [...messages, message];
 
         setAppState({ messages: newMessages, status: 'loading' });

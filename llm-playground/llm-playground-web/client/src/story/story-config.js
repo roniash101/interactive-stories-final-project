@@ -13,12 +13,8 @@ const STORY_CONFIG_1 = {
         <characterName> has <Joined/Left> the conversation
         "
 
-        Provide your output for a system message in JSON format of this scheme:
-        {
-            // string
-            "status": "ok",
-        }
-
+        Provide your output for a system message in JSON format of this scheme: {"OK": true}.
+      
         A character is considered "currently present" in the conversation when there was a notification that it joined,
         and since then there wasn't a notification that it left.
         A character can't know or refer in it's replies to information that was given during a time it wasn't present in the conversation.
