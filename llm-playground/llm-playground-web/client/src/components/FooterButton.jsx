@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSendMessage } from "../story/story-logic";
+import { useAppState } from "../app-state/AppStateProvider";
 
 const FooterButton = (props) => {
     const { value, array, setArray } = props;
+    const { status } = useAppState();
+    const isLoading = (status === 'text-loading' || status === 'view-loading');
     const [isActive, setIsActive] = useState(false);
     const sendMessage = useSendMessage();
 
@@ -36,10 +39,12 @@ const FooterButton = (props) => {
     }
 
     return (
-        <div className={`button ${isActive && "active"}`}
-            onClick={() => onButtonClick(value)}>
+        <button
+            className={`button ${isActive && "active"}`}
+            onClick={() => onButtonClick(value)}
+            disabled={isLoading}>
             {value}
-        </div>
+        </button>
     );
 }
 
