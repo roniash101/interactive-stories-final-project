@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FooterButton = (props) => {
     const {value, array, setArray} = props;
     const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+        if (array.indexOf(value) != -1) setIsActive(true);
+    }, []);
 
     const onButtonClick = (value) => {
         if (!isActive) {
