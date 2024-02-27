@@ -6,7 +6,7 @@
     font-family: Arial, Helvetica, sans-serif;
 
     .bubble {
-        min-width: 6rem;
+        min-width: 6rem; //todo: change to 8
         max-width: 10rem;
         position: absolute;
         top: 1rem;
@@ -19,6 +19,7 @@
         }
 
         textarea {
+            resize: vertical;
             margin: 0.25em;
             border: none;
             font-family: Arial, Helvetica, sans-serif;
