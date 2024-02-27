@@ -13,6 +13,12 @@ const STORY_CONFIG_1 = {
         <characterName> has <Joined/Left> the conversation
         "
 
+        Provide your output for a system message in JSON format of this scheme:
+        {
+            // string
+            "status": "ok",
+        }
+
         A character is considered "currently present" in the conversation when there was a notification that it joined,
         and since then there wasn't a notification that it left.
         A character can't know or refer in it's replies to information that was given during a time it wasn't present in the conversation.
@@ -23,7 +29,7 @@ const STORY_CONFIG_1 = {
         - Lilach's goal for Smadar: to convince Smadar to apologize to Barak and to agree to come to the concert with Lilach and Galiet.
         - Lilach's goal for Barak: to convince Barak to give them the tickets to the concert.
 
-        Provide your output in JSON format of this scheme:
+        Provide your output for a user message in JSON format of this scheme:
         {                     
             // string, the text that the character of Galit says.
             // If Galit is not currently present in the conversation the text should be empty.
@@ -138,7 +144,9 @@ const STORY_CONFIG_1 = {
         - Galit does not reveal all the inforamation at once.
         - The conversation advances slowly. 
         - The characters insist to make Lilach a hard time and don't let achieve her goals no matter what. 
-        - Besides the tickets that Barak has, all the tickets are sold out and it is impossible to get tickets from another resource (for example, no one is trying to sell his tickets online).
+        - Besides the tickets that Barak has, all the tickets are sold out and it is impossible to get tickets from another resource
+            (for example, no one is trying to sell his tickets online).
+        - The characters should be more responsive to Lilach's lines.
     `,
     sceneDescription:
     `

@@ -3,13 +3,14 @@ import { useAppState, useSetAppState } from '../app-state/AppStateProvider';
 import { SETTINGS } from '../../settings';
 import Characters from './Characters';
 
-export function useSendMessage(message, onSend) {
+export function useSendMessage(onSent) {
     const { messages, status } = useAppState();
     const setAppState = useSetAppState();
     const handleResponse = useHandleStoryResponse();
-    const [isEnd, setIsEnd] = useState(false);
 
-    const send = useCallback(() => {
+    const send = useCallback((message) => {
+
+        console.log("message", message);
 
         const newMessages = [...messages, message];
 
@@ -30,9 +31,9 @@ export function useSendMessage(message, onSend) {
                 let storytellerResponse = data.choices[0].message.content;
                 storytellerResponse = JSON.parse(storytellerResponse);
 
-                setAppState({ status: 'idle'});
+                setAppState({ status: 'idle' });
                 handleResponse(newMessages, storytellerResponse);
-                onSend();
+                onSent();
 
                 // if (storytellerResponse.currentKeyGoalIndex >= 3 && storytellerResponse.isCurrentKeyGoalCompleted) {
                 //     setIsEnd(true);
@@ -49,7 +50,6 @@ export function useSendMessage(message, onSend) {
     return send;
 }
 
-
 export function useHandleStoryResponse() {
     const { inputMessage, charactersText } = useAppState();
     const setAppState = useSetAppState();
@@ -57,12 +57,12 @@ export function useHandleStoryResponse() {
     function handleStoryResponse(messages, response) {
         if (!response) return;
 
-        // Test modifying the words limit:
-        // if (!isNaN(parseInt(newMessage))) {
-        //     newMessages.push({ role: 'system', content: `Your next storyText output has maximum length of ${newMessage} words.` })
-        // }
-
-        // properties: galitText, smadarText, barakText, LilachInnerDialogue, callToAction, galitGoalProgress, smadarGoalProgress, barakGoalProgress
+        /* 
+        properties:
+            galitText, smadarText, barakText,
+            LilachInnerDialogue, callToAction,
+            galitGoalProgress, smadarGoalProgress, barakGoalProgress
+        */
         console.log("response", response);
 
         const newChatactersText = {
