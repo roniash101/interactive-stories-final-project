@@ -8,23 +8,28 @@ export type Message = {
 }
 
 type AppState = {
-    sceneDescription: string,
-    messages: Message[];
-    innerDialogue: string,
     status: 'idle' | 'loading' | 'error';
     inputMessage: '';
+    sceneDescription: string;
+    innerDialogue: string;
+    charactersText: {};
+    messages: Message[];
 }
 
 const initAppState: AppState = {
-    sceneDescription: storyConfig.sceneDescription,
-    messages: [
-        { role: 'system', content: storyConfig.instructions },
-        // { role: 'assistant', content: storyConfig.openingLine },
-        // { role: 'assistant', content: storyConfig.callToAction }
-    ],
-    innerDialogue: '',
     status: 'idle',
     inputMessage: '',
+    sceneDescription: storyConfig.sceneDescription,
+    innerDialogue: '',
+    charactersText: {
+        'Lilach': '',
+        'Galit': '',
+        'Smadar': '',
+        'Barak': ''
+    },
+    messages: [
+        { role: 'system', content: storyConfig.instructions },
+    ],
 }
 
 const AppStateContext = createContext(initAppState);

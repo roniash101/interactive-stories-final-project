@@ -78,7 +78,7 @@ export default function InteractorInput() {
             }}>
             {isEnd ? <span>The End.</span> : //todo: handle end
                 <>
-                    <textarea // todo: prevent resize?
+                    <textarea
                         value={inputMessage}
                         cols="20"
                         rows="5"
