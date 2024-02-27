@@ -8,7 +8,7 @@ const FooterButton = (props) => {
         if (array.indexOf(value) != -1) setIsActive(true);
     }, []);
 
-    const onButtonClick = (value) => {
+    const onButtonClick = (value) => { // todo: update gpt
         if (!isActive) {
             setArray([...array, value]);
             setIsActive(true);

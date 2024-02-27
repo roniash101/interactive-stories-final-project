@@ -9,23 +9,36 @@ export function useHandleStoryResponse() {
     function handleStoryResponse(messages, response) {
         if (!response) return;
 
-        // const newMessages = [...messages];
-
         // Test modifying the words limit:
         // if (!isNaN(parseInt(newMessage))) {
         //     newMessages.push({ role: 'system', content: `Your next storyText output has maximum length of ${newMessage} words.` })
         // }
 
-        // properties: characterName, characterText, LilachInnerDialogue, callToAction, goalProgress
+        // properties: galitText, smadarText, barakText, LilachInnerDialogue, callToAction, galitGoalProgress, smadarGoalProgress, barakGoalProgress
         console.log("response", response);
 
-        if (response.characterName && response.characterText) {            
-            let charactersTextState = {...charactersText};
-            charactersTextState[response.characterName] = response.characterText;
-            setAppState({charactersText: charactersTextState});
-            // newMessages.push({ role: 'assistant', content: response.characterText });
+        const newChatactersText = {
+            Galit: '',
+            Smadar: '',
+            Barak: ''
+        };
+
+        if (response.galitText) {            
+            newChatactersText.Galit = response.galitText;
         }
 
+        if (response.smadarText) {            
+            newChatactersText.Smadar = response.smadarText;
+        }
+
+        if (response.barakText) {            
+            newChatactersText.Barak = response.barakText;
+        }
+
+        setAppState({charactersText: {...newChatactersText}});
+
+        // const newMessages = [...messages];
+        // newMessages.push({ role: 'assistant', content: response.characterText });
         // setAppState({ messages: [...newMessages] }); // todo: update scene description?
 
         setTimeout(() => {

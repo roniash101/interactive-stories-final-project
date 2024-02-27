@@ -8,19 +8,12 @@ const CharacterView = (props) => {
     const { name } = props;
     const chatacter = Characters[name];
 
-    const { messages, innerDialogue, status, charactersText } = useAppState();
-    const [text, setText] = useState(''); // todo: move main vs regular handle to bubble
-
-    // useEffect(() => {
-    //     const lastMessage = messages[messages.length - 1];
-    //     if (lastMessage.role == "assistant") // todo: every message should contain all the roles?  == name
-    //     {
-    //         setText(lastMessage.content) // todo: parse chracter's line
-    //     }
-        
-    // }, [messages])
+    const { innerDialogue, status, charactersText } = useAppState();
+    const [text, setText] = useState('');
 
     useEffect(() => {
+        if (chatacter.isMain) return;
+
         if (charactersText[name] != null)
         {
             setText(charactersText[name]);

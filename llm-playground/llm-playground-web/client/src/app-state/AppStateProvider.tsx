@@ -22,13 +22,14 @@ const initAppState: AppState = {
     sceneDescription: storyConfig.sceneDescription,
     innerDialogue: '',
     charactersText: {
-        'Lilach': '',
         'Galit': '',
         'Smadar': '',
         'Barak': ''
     },
     messages: [
         { role: 'system', content: storyConfig.instructions },
+        { role: 'system', content: "Lilach has Joined the conversation" },
+        { role: 'system', content: "Galit has Joined the conversation" },
     ],
 }
 
