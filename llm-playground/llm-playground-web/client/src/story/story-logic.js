@@ -1,6 +1,54 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppState, useSetAppState } from '../app-state/AppStateProvider';
+import { SETTINGS } from '../../settings';
 import Characters from './Characters';
+
+export function useSendMessage(message, onSend) {
+    const { messages, status } = useAppState();
+    const setAppState = useSetAppState();
+    const handleResponse = useHandleStoryResponse();
+    const [isEnd, setIsEnd] = useState(false);
+
+    const send = useCallback(() => {
+
+        const newMessages = [...messages, message];
+
+        setAppState({ messages: newMessages, status: 'loading' });
+
+        fetch(
+            `${SETTINGS.SERVER_URL}/story-completions`,
+            {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(newMessages)
+            }
+        ).then(response => response.json()
+        ).then(data => {
+            try {
+                let storytellerResponse = data.choices[0].message.content;
+                storytellerResponse = JSON.parse(storytellerResponse);
+
+                setAppState({ status: 'idle'});
+                handleResponse(newMessages, storytellerResponse);
+                onSend();
+
+                // if (storytellerResponse.currentKeyGoalIndex >= 3 && storytellerResponse.isCurrentKeyGoalCompleted) {
+                //     setIsEnd(true);
+                // }
+
+            } catch { err => { throw err } }
+        }).catch(err => {
+            console.error('Api error. Details: ', err);
+            setAppState({ status: 'error' });
+        })
+
+    }, [messages]);
+
+    return send;
+}
+
 
 export function useHandleStoryResponse() {
     const { inputMessage, charactersText } = useAppState();
@@ -23,19 +71,19 @@ export function useHandleStoryResponse() {
             Barak: ''
         };
 
-        if (response.galitText) {            
+        if (response.galitText) {
             newChatactersText.Galit = response.galitText;
         }
 
-        if (response.smadarText) {            
+        if (response.smadarText) {
             newChatactersText.Smadar = response.smadarText;
         }
 
-        if (response.barakText) {            
+        if (response.barakText) {
             newChatactersText.Barak = response.barakText;
         }
 
-        setAppState({charactersText: {...newChatactersText}});
+        setAppState({ charactersText: { ...newChatactersText } });
 
         // const newMessages = [...messages];
         // newMessages.push({ role: 'assistant', content: response.characterText });

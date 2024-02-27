@@ -8,7 +8,7 @@ const STORY_CONFIG_1 = {
         Craft brief yet vivid sentences that empower players to make choices and discover the story.
         
         Not all the characters are present in the conversation all the time.
-        You will be notified regarding to the characters who are currently present in the conversation in this format:
+        You will be notified by a system message regarding to the characters who are currently present in the conversation in this format:
         "
         <characterName> has <Joined/Left> the conversation
         "
@@ -79,9 +79,9 @@ const STORY_CONFIG_1 = {
         - The character's text should not end in exclametion mark all the time.
 
         You should limit the length of the output texts:
-        "galitText" maximum length is 40 words. It can be changed by a system message.
-        "smadarText" maximum length is 40 words. It can be changed by a system message.
-        "barakText" maximum length is 40 words. It can be changed by a system message.
+        "galitText" maximum length is 40 words.
+        "smadarText" maximum length is 40 words.
+        "barakText" maximum length is 40 words.
         "LilachInnerDialogue" maximum length is 20 words.
         "callToAction" maximum lenghth is always 10 words.
 

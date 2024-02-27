@@ -1,58 +1,25 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
 import { SETTINGS } from "../../../settings";
-import { useHandleStoryResponse } from "../../story/story-logic";
+import { useSendMessage, useHandleStoryResponse } from "../../story/story-logic";
 import "./interactor-input.css";
 
 export default function InteractorInput() {
 
     const { messages, status, inputMessage } = useAppState();
     const setAppState = useSetAppState();
-    const [isEnd, setIsEnd] = useState(false);
-
     const handleResponse = useHandleStoryResponse();
 
-    const send = useCallback(() => {
+    const message = { role: 'user', content: inputMessage };
+    const onSent = () => setAppState({ inputMessage: '' });
+    const realSend = useSendMessage(message, onSent);
 
-        const newMessages = [...messages, { role: 'user', content: inputMessage }];
-
-        setAppState({ messages: newMessages, status: 'loading'});
-
-        fetch(
-            `${SETTINGS.SERVER_URL}/story-completions`,
-            {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify(newMessages)
-            }
-        ).then(response => response.json()
-        ).then(data => {
-            try {
-                let storytellerResponse = data.choices[0].message.content;
-                storytellerResponse = JSON.parse(storytellerResponse);
-
-                setAppState({ status: 'idle',  inputMessage: '' });
-                handleResponse(newMessages, storytellerResponse);
-
-                if (storytellerResponse.currentKeyGoalIndex >= 3 && storytellerResponse.isCurrentKeyGoalCompleted) {
-                    setIsEnd(true);
-                }
-
-            } catch { err => { throw err } }
-        }).catch(err => {
-            console.error('Api error. Details: ', err);
-            setAppState({ status: 'error' });
-        })
-
-    }, [messages, inputMessage]);
+    const [isEnd, setIsEnd] = useState(false);
 
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
-            send();
-
-            setAppState({innerDialogue: ''});
+            realSend();
+            setAppState({ innerDialogue: '' });
         }
     }
 
