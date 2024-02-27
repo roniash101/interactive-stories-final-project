@@ -17,6 +17,11 @@
         background-color: #ffb703;
         border: 2px solid black;
         padding: 0 1em 0 1em;
+
+        p {
+            margin: 0;
+            max-width: 25rem;
+        }
     }
 
     .scene-view {

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAppState } from "../../app-state/AppStateProvider"
 import Characters from "../../story/Characters";
 import Bubble from "../../components/bubble/Bubble";
-import LoadingDots from "../../components/LoadingDots";
 import "./CharacterView.scss";
 
 const CharacterView = (props) => {
@@ -18,6 +17,7 @@ const CharacterView = (props) => {
         {
             setText(lastMessage.content) // todo: parse chracter's line
         }
+        
     }, [messages])
 
     return (
@@ -34,8 +34,7 @@ const CharacterView = (props) => {
                 </>
                 :
                 <>
-                    <Bubble isModeSpeak={true} text={text} />
-                    {status === 'loading' && <LoadingDots /> /*move inside bubble*/ }
+                    <Bubble isModeSpeak={true} text={text} isLoading={status === 'loading'} />
                 </>}
             {/* </div> */}
         </div>

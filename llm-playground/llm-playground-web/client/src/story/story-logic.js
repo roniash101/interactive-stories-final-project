@@ -1,15 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useAppState, useSetAppState } from '../app-state/AppStateProvider';
-import Timer from '../utils/timer';
 
 export function useHandleStoryResponse() {
     const { inputMessage } = useAppState();
     const setAppState = useSetAppState();
-    const idleTimer = useRef();
-
-    useEffect(() => {
-        idleTimer.current?.cancel();
-    }, [inputMessage]);
 
     function handleStoryResponse(messages, response) {
         if (!response) return;
@@ -28,30 +22,13 @@ export function useHandleStoryResponse() {
             newMessages.push({ role: 'assistant', content: response.characterText });
         }
 
-        if (response.LilachInnerDialogue && response.callToAction) {
-            setAppState({ innerDialogue: response.LilachInnerDialogue + " " + response.callToAction });
-        }
-
         setAppState({ messages: [...newMessages] }); // todo: update scene description?
 
-        // If the player is idle for a long period, add some content or a hint to push the story forward.
-        idleTimer.current = new Timer(10000, () => {
-            // if (response.storyEvent && Math.random() > 0.7) {
-            //     // Trigger an independent story event:
-            //     newMessages.push({ role: 'assistant', content: response.storyEvent });
-            //     setAppState({ messages: [...newMessages] });
-            // }
-
-            if (response.currentKeyGoalIndex < 3 || (response.currentKeyGoalIndex == 3 && !response.isCurrentKeyGoalCompleted)) {
-
-                if (response.callToAction) {
-                    // Apply call to action hint:
-                    newMessages.push({ role: 'assistant', content: `(${response.callToAction})` });
-                    setAppState({ messages: [...newMessages] });
-                }
+        setTimeout(() => {
+            if (response.LilachInnerDialogue && response.callToAction) {
+                setAppState({ innerDialogue: response.LilachInnerDialogue + " " + response.callToAction });
             }
-        });
-        idleTimer.current.start();
+        }, 500)
     }
 
     return handleStoryResponse;

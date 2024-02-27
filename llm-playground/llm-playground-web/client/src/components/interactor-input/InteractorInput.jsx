@@ -50,7 +50,9 @@ export default function InteractorInput() {
 
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
-            send()
+            send();
+
+            setAppState({innerDialogue: ''});
         }
     }
 

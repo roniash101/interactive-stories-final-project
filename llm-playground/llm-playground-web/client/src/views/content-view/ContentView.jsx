@@ -6,7 +6,7 @@ import { useAppState } from "../../app-state/AppStateProvider";
 import "./ContentView.scss";
 
 const ContentView = () => {
-    const {sceneDescription} = useAppState();
+    const { sceneDescription } = useAppState();
     const [participants, setParticipants] = useState(["Lilach", "Galit"]); //todo: add phone ring etc..
 
     const onButtonClick = (name) => {
@@ -15,7 +15,9 @@ const ContentView = () => {
 
     return (
         <div className="content-view">
-            <div className="topper">{sceneDescription}</div>
+            <div className="topper">
+                <p>{sceneDescription}</p>
+            </div>
 
             <SceneView participants={participants} />
 
