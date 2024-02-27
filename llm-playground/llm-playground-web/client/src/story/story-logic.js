@@ -3,23 +3,25 @@ import { useAppState, useSetAppState } from '../app-state/AppStateProvider';
 import { SETTINGS } from '../../settings';
 import Characters from './Characters';
 
-export function useSendMessage(onSent) {
+export function useSendMessage() {
     const { messages, status } = useAppState();
     const setAppState = useSetAppState();
     const handleResponse = useHandleStoryResponse();
 
-    const send = useCallback((message) => {
+    const send = useCallback((message, onSent) => {
 
         console.log("message", message);
 
-        let reminder = message.role == 'user' ? `\n Reminder: This is a user message, respond with the right JSON scheme.`
-            : `\n Reminder: This is a system message, respond with {"OK": true},`;
+        let loadingType = message.role == 'user' ? 'text-loading' : 'view-loading'; 
+        let reminder = message.role == 'user' ?
+            `\n Reminder: This is a user message, respond with the right JSON scheme.`
+            : `\n Reminder: This is a system message, respond with {"OK": true}.`;
 
         message.content += reminder;
 
         const newMessages = [...messages, message];
 
-        setAppState({ messages: newMessages, status: 'loading' });
+        setAppState({ messages: newMessages, status: loadingType });
 
         fetch(
             `${SETTINGS.SERVER_URL}/story-completions`,

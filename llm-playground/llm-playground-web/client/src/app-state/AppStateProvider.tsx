@@ -8,7 +8,7 @@ export type Message = {
 }
 
 type AppState = {
-    status: 'idle' | 'loading' | 'error';
+    status: 'idle' | 'text-loading' | 'view-loading' | 'error';
     inputMessage: '';
     sceneDescription: string;
     innerDialogue: string;

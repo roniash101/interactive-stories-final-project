@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useSendMessage } from "../story/story-logic";
 
 const FooterButton = (props) => {
-    const {value, array, setArray} = props;
+    const { value, array, setArray } = props;
     const [isActive, setIsActive] = useState(false);
-    const sendMessage = useSendMessage(() => {});
+    const sendMessage = useSendMessage();
 
     useEffect(() => {
         if (array.indexOf(value) != -1) setIsActive(true);
@@ -17,18 +17,22 @@ const FooterButton = (props) => {
 
     const onButtonClick = (value) => {
         if (!isActive) {
-            setArray([...array, value]);
             setIsActive(true);
+
+            sendMessage({ role: 'system', content: formatNotification() }, () => {
+                setArray([...array, value]);
+            });
         }
         else {
             let copyArray = [...array];
             let index = copyArray.indexOf(value);
             copyArray.splice(index, 1);
-            setArray(copyArray)
             setIsActive(false);
-        }
 
-        sendMessage( { role: 'system', content: formatNotification() });
+            sendMessage({ role: 'system', content: formatNotification() }, () => {
+                setArray(copyArray)
+            });
+        }
     }
 
     return (

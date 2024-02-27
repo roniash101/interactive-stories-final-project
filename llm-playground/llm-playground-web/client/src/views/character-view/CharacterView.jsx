@@ -35,7 +35,7 @@ const CharacterView = (props) => {
                 </>
                 :
                 <>
-                    <Bubble isModeSpeak={true} text={text} isLoading={status === 'loading'} />
+                    <Bubble isModeSpeak={true} text={text} isLoading={status === 'text-loading'} />
                 </>}
             {/* </div> */}
         </div>
