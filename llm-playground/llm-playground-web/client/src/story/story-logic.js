@@ -8,16 +8,32 @@ export function useSendMessage() {
     const setAppState = useSetAppState();
     const handleResponse = useHandleStoryResponse();
 
-    const send = useCallback((message, onSent) => {
+    const send = useCallback((message, participants, onSent) => {
 
-        console.log("message", message);
+        let loadingType = message.role == 'user' ? 'text-loading' : 'view-loading';
+        // let reminder = message.role == 'user' ?
+        //     `\n [Reminder: This is a user message (a line said by Lilach), respond to it with the right JSON scheme (that includes characters texts etc.)]`
+        //     : `\n [Reminder: This is a system message, respond with {"OK": true}.]`;
 
-        let loadingType = message.role == 'user' ? 'text-loading' : 'view-loading'; 
-        let reminder = message.role == 'user' ?
-            `\n Reminder: This is a user message, respond with the right JSON scheme.`
-            : `\n Reminder: This is a system message, respond with {"OK": true}.`;
+
+        // boolean, if the given message has a "system" role,
+        // systemMessageAck should be true and all the other fields should be empty.
+        // Otherwise, if the given message has a "user" role,
+        // systemMessageAck should be false and the other fields should be generated according to their rules.
+
+        // let reminder = message.role == 'user' ?
+        //     `\n [Reminder: This is a user message (a line said by Lilach),
+        //     systemMessageAck should be false
+        //     and the other fields should be generated according to their rules.]`
+        //     : `\n [Reminder: This is a system message,
+        //     systemMessageAck should be true
+        //     and all the other fields should be empty.]`;
+
+        let reminder = `\n(SYSTEM: The currently present characters in the conversation are: [${participants}])`;
 
         message.content += reminder;
+
+        console.log("message", message);
 
         const newMessages = [...messages, message];
 

@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SceneView from "../scene-view/SceneView";
 import FooterButton from "../../components/FooterButton";
 import Characters from "../../story/Characters";
-import { useAppState } from "../../app-state/AppStateProvider";
+import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
 import "./ContentView.scss";
 
 const ContentView = () => {
-    const { sceneDescription } = useAppState();
-    const [participants, setParticipants] = useState(["Lilach", "Galit"]); //todo: add phone ring etc..
+    const { sceneDescription, participants } = useAppState();
+    const setAppState = useSetAppState();
+    // const [participants, setParticipants] = useState(["Lilach"]); //todo: add phone ring etc..
+
+    // useEffect(() => {
+    //     setAppState(participants);
+    // }, [participants]);
+
+    const setParticipants = (value) => {
+        setAppState({ participants: value });
+    }
 
     const onButtonClick = (name) => {
-        setParticipants([...participants, name]);
+        setAppState([...participants, name]);
     }
 
     return (

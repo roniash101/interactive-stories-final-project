@@ -13,6 +13,7 @@ type AppState = {
     sceneDescription: string;
     innerDialogue: string;
     charactersText: {};
+    participants: string[],
     messages: Message[];
 }
 
@@ -26,10 +27,11 @@ const initAppState: AppState = {
         'Smadar': '',
         'Barak': ''
     },
+    participants: ['Lilach', 'Galit'],
     messages: [
         { role: 'system', content: storyConfig.instructions },
-        { role: 'system', content: "Lilach has Joined the conversation" },
-        { role: 'system', content: "Galit has Joined the conversation" },
+        // { role: 'system', content: "SYSTEM: Lilach has Joined the conversation" },
+        // { role: 'system', content: "SYSTEM: Galit has Joined the conversation" },
     ],
 }
 

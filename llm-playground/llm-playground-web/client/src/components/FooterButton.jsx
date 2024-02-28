@@ -15,16 +15,16 @@ const FooterButton = (props) => {
 
     const formatNotification = () => {
         let action = !isActive ? "joined" : "left";
-        return `${value} has ${action} the conversation`;
+        return `SYSTEM: ${value} has ${action} the conversation`;
     }
 
     const onButtonClick = (value) => {
         if (!isActive) {
             setIsActive(true);
 
-            sendMessage({ role: 'system', content: formatNotification() }, () => {
+            // sendMessage({ role: 'system', content: formatNotification() }, () => {
                 setArray([...array, value]);
-            });
+            // });
         }
         else {
             let copyArray = [...array];
@@ -32,9 +32,9 @@ const FooterButton = (props) => {
             copyArray.splice(index, 1);
             setIsActive(false);
 
-            sendMessage({ role: 'system', content: formatNotification() }, () => {
+            // sendMessage({ role: 'system', content: formatNotification() }, () => {
                 setArray(copyArray)
-            });
+            // });
         }
     }
 
