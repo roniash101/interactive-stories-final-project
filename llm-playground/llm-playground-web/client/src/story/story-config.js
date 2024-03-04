@@ -11,13 +11,21 @@ const STORY_CONFIG_1 = {
     - Lilach's goal for Galit: to help Galit relax and to make her agree to come to the concert with Lilach and Smadar.
     - Lilach's goal for Smadar: to convince Smadar to apologize to Barak and to agree to come to the concert with Lilach and Galiet.
     - Lilach's goal for Barak: to convince Barak to give them the tickets to the concert.
+    When each of these goals progresses, the corresponding charcter's goalProgress should be increased accordingly.
+    When each of these goals is achieved, the corresponding charcter's goalProgress should be equals to 1 immidiatly.
+    Examples:
+    - When Smadar apologizes to Barak, barakGoalProgress=0.9 and when Barak gives Lilach the tickets barakGoalProgress=1.
+    - When Lilach tells galit she has the tickets galitGoalProgress>=0.6, when galit agrees to come with Smadar to the concert galitGoalProgress>=0.6.
+        If both conditions were achieved galitGoalProgress=1.
+    - When Smadar and Barak reconcile smadarGoalProgress>=0.5, when Smadar agrees to come to the concert with Galit smadarGoalProgress=1.
 
     Not all the characters are present in the conversation all the time.
     You will be notified in every message about the characters who are currently present in the conversation, in the following format:
     (SYSTEM: The currently present characters in the conversation are: [<Character Name 1>, <Character Name 2>]).
 
-    If a character is currently present it must have a text reply.
-    If a character is not currently present it must not have a text reply.
+    If a character is currently present it must have a non-empty text reply.
+    If a character is not currently present it must have an empty text reply.
+    If a character is not currently present it's goal progress must not be changed.
     A character can't know or refer in it's replies to information that was given during a time it wasn't present in the conversation.
     A character is only aware to things that happen in the conversation while it was present.
     All the present characters in the conversaion are aware to the other currently present characters and can talk directly to them.
@@ -27,35 +35,38 @@ const STORY_CONFIG_1 = {
     Provide your output in JSON format of this scheme:
     {   
         // string, the text that the character of Galit says.
-        // If Galit is not currently present in the conversation the text should be empty.
+        // If Galit is not currently present in the conversation galitText should be empty.
         // the rules for a specfic character's text are elaborated below.
         "galitText": "",
 
         // string, the text that the character of Smadar says.
-        // If Smadar is not currently present in the conversation the text should be empty.
+        // If Smadar is not currently present in the conversation smadarText should be empty.
         // the rules for a specfic character's text are elaborated below.
         "smadarText": "",
 
         // string, the text that the character of Barak says.
-        // If Barak is not currently present in the conversation the text should be empty.
+        // If Barak is not currently present in the conversation barakText should be empty.
         // the rules for a specfic character's text are elaborated below.
         "barakText": "",
 
         // float between 0 and 1. It represents how close is the player to reach Galit's goal.
         // 0 means not at all, 1 means the goal is achieved.
+        // If Galit is not currently present galitGoalProgress must not be changed.
         "galitGoalProgress": 0,
 
         // float between 0 and 1. It represents how close is the player to reach Smadar's goal.
         // 0 means not at all, 1 means the goal is achieved.
+        // If Smadar is not currently present smadarGoalProgress must not be changed.
         "smadarGoalProgress": 0,
 
         // float between 0 and 1. It represents how close is the player to reach Barak's goal.
         // 0 means not at all, 1 means the goal is achieved.
+        // If Barak is not currently present barakGoalProgress must not be changed.
         "barakGoalProgress": 0,
 
         // string, represents the inner dialouge in Lilach's mind in response to the given characters' texts".
         // The inner dialouge is over dramatic but uses a simple language.
-        // The inner dialouge should be vivid and display Lilach's complex inner world that includes a big range of feelings:
+        // The inner dialouge should display Lilach's complex inner world that includes a big range of feelings:
         // anger, happines, love, disappointment etc.
         // The dialouge does not have the word "Lilach" explicitly and refers to Lilach as first person - "I", "me" etc.
         "LilachInnerDialogue": ""
@@ -92,6 +103,7 @@ const STORY_CONFIG_1 = {
     Smadar is supposed to take care of the tickets, and Lilach and Galit need to pay her back for the price of their tickets.
     It is the day of the big concert, and when Galit calls to Smadar to make sure everything is arranged with the tickets, she finds out there is a problem.
     Turns out Smadar and Barak had fought on the day before and ended breaking up.
+    They fought because they went to a restaurant that day, and Smadar thoght that Barak was hitting on a waitress there even though he didn't
     Things ended badly and they are not on speaking terms
     Smadar refuses to talk to Barak about the tickets even though it is their only option to get tickets because all the other are sold out.
     The furious Galit calls to Lilach to share with her the information.
@@ -113,6 +125,7 @@ const STORY_CONFIG_1 = {
     Smadar's details are as folowing:
     "
     - Smadar is very emotional due to her recent break up.
+    - Smadar is covinced that Barak was hitting on a waitress in that restaursnt.
     - Smadar is very angry that Galit is being egocentric and insensetive to her break up.
     - Smadar is very hurt and angry of Barak and refuses to talk to him.
     - Smadar does not think she needs to apologize to Barak.
@@ -124,6 +137,7 @@ const STORY_CONFIG_1 = {
     Barak's details are as folowing:
     "
     - Barak is very emotional due to his recent break up.
+    - Barak is hurt because Smadar doesn't trust him even though he didn't do anything.
     - Barak is very hurt and angry of Smadar and insists she apologizes to him in person.
     - Barak is very childish and stubborn and does not want to give the girls the tickets unless Smadar apologizes to him.
     - Barak is not convinced no mattar what.
@@ -149,7 +163,7 @@ their favorite band: Hadorbanim. It is going to be absolutly amazing.
 endSceneDescription:
 `
 So, after a lot of ups and downs, the drama was finally solved. The trio had managed to put all the bad energy aside and ended up having a blast at the concert.
-All's well that ends well - until the next drama!
+All's well that ends well... until the next drama!
 `,
 innerDialogue: `I should probably start getting ready to the concert, but what should I wear? maybe I'll call Galit and ask her what she is wearing...`,
 };

@@ -102,18 +102,18 @@ export function useHandleStoryResponse() {
             newChatactersText.Barak = response.barakText;
         }
 
-        const newGoalProgress = { ...goalProgress };
+        let newGoalProgress = { ...goalProgress };
         let isVictory = false;
 
-        if (response.galitGoalProgress) {
+        if (response.galitGoalProgress && response.galitGoalProgress != 0) {
             newGoalProgress.Galit = response.galitGoalProgress;
         }
 
-        if (response.smadarGoalProgress) {
+        if (response.smadarGoalProgress && response.smadarGoalProgress != 0) {
             newGoalProgress.Smadar = response.smadarGoalProgress;
         }
 
-        if (response.barakGoalProgress) {
+        if (response.barakGoalProgress && response.barakGoalProgress != 0) {
             newGoalProgress.Barak = response.barakGoalProgress;
         }
 
