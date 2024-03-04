@@ -18,7 +18,7 @@ const CharacterView = (props) => {
             setText(charactersText[name]);
         }
 
-    }, [charactersText])
+    }, [charactersText, name])
 
     return (
         <div className="character-view" style={{ "backgroundColor": chatacter.backgroundColor }}>
