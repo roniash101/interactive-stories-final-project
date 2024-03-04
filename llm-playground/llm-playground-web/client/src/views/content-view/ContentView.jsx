@@ -7,7 +7,7 @@ import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
 import "./ContentView.scss";
 
 const ContentView = () => {
-    const { sceneDescription, participants } = useAppState();
+    const { title, sceneDescription, participants } = useAppState();
     const setAppState = useSetAppState();
     // const [participants, setParticipants] = useState(["Lilach"]); //todo: add phone ring etc..
 
@@ -25,6 +25,7 @@ const ContentView = () => {
 
     return (
         <div className="content-view">
+            <div className="title">{title}</div>
             <div className="topper">
                 <div className="progress-bars">
                 {Object.keys(Characters).map((name, i) => (

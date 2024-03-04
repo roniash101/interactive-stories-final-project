@@ -1,49 +1,59 @@
 .progress-bar {
     display: flex;
+    align-items: center;
+    // justify-content: space-around;
+    margin-bottom: 0.2em;
 
     .name {
-        font-weight: bold;
-        width: 3.5em;
-        padding-right: 1em;
+        // font-weight: bold;
+        width: 4em;
+        // padding-right: 0.5em;
+        // padding-bottom: 0.2em;
+        // font-size: medium;
     }
 
     .bar {
-        background-color: white;
-        width: 10em;
+        // display: flex;
+        background-color: whitesmoke;
+        width: 7em;
         display: flex;
         align-items: center;
         justify-content: start;
-        border-radius: 6px;
-        padding: 0.3em;
+        border-radius: 7px;
+        padding: 0.15em;
         // box-shadow:  rgb(255, 255, 255) 3px 3px 6px 0px inset, rgb(255, 255, 255) -3px -3px 6px 1px inset;
         border: 1px solid black;
 
         .background {
+            display: flex;
+            align-items: center;
             // background-color: lightgray;
-            height: 0.7em;
+            height: 0.5em;
             width: 100%;
+            border-radius: 5px;
             border: 1px solid lightgray;
             box-shadow:  rgba(199, 199, 197, 0.5) 3px 3px 6px 0px inset, rgb(255, 255, 255) -3px -3px 6px 1px inset;
         }
 
         .progress {
-            height: 0.7em;
+            height: 0.5em;
+            border-radius: 5px;
             border: 1px solid black;
         }
 
         .blue {
             background-color: cyan;
-            box-shadow:  rgba(1, 255, 56, 0.5) 3px 3px 6px 0px inset, rgb(125, 133, 243) -3px -3px 6px 1px inset;
+            box-shadow:  rgba(1, 255, 56, 0.5) 3px 3px 9px 0px inset, rgb(125, 133, 243) -3px -3px 9px 1px inset;
         }
 
         .green {
             background-color: greenyellow;
-            box-shadow:  rgba(1, 255, 56, 0.5) 3px 3px 6px 0px inset, rgb(3, 105, 42) -3px -3px 6px 1px inset;
+            box-shadow:  rgba(1, 255, 56, 0.5) 3px 3px 9px 0px inset, rgb(3, 105, 42) -3px -3px 9px 1px inset;
         }
 
         .red {
             background-color: orangered;
-            box-shadow:  rgba(255, 238, 0, 0.5) 3px 3px 6px 0px inset, rgb(255, 38, 0) -3px -3px 6px 1px inset;
+            box-shadow:  rgba(255, 238, 0, 0.5) 3px 3px 9px 0px inset, rgb(255, 38, 0) -3px -3px 9px 1px inset;
         }
     }
 }

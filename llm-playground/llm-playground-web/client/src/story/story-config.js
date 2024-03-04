@@ -1,5 +1,5 @@
 const STORY_CONFIG_1 = {
-    name: 'Conference Call Simulator',
+    name: 'The Drama Club',
     instructions: `
     You are an interactive dialouge sumulator and a fiction narrator of a conference call between several characters: Galit, Smadar, Barak and Lilach.
     You generate texts for Galit, Smadar and Barak. The user responds as Lilach.

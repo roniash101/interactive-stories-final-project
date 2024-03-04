@@ -8,9 +8,10 @@ export type Message = {
 }
 
 type AppState = {
+    title: string,
+    sceneDescription: string;
     status: 'idle' | 'text-loading' | 'view-loading' | 'error';
     inputMessage: '';
-    sceneDescription: string;
     innerDialogue: string;
     charactersText: {};
     charactersProgress: {},
@@ -19,16 +20,17 @@ type AppState = {
 }
 
 const initAppState: AppState = {
+    title: storyConfig.name,
+    sceneDescription: storyConfig.sceneDescription,
     status: 'idle',
     inputMessage: '',
-    sceneDescription: storyConfig.sceneDescription,
     innerDialogue: '',
     charactersText: {
         'Galit': '',
         'Smadar': '',
         'Barak': ''
     },
-    charactersProgress: {
+    charactersProgress: { // todo: change to 0
         'Galit': 0,
         'Smadar': 0,
         'Barak': 0

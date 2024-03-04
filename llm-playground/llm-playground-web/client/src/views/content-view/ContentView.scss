@@ -1,3 +1,10 @@
+* {
+//  font-size: medium;
+ font-family: "Gochi Hand", cursive;
+ font-weight: 400;
+ font-style: normal;
+}
+
 .content-view {
     display: flex;
     flex-direction: column;
@@ -5,35 +12,50 @@
     align-items: stretch;
     height: 100vh;
     width: 100vw;
-    border: 2px solid black;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
+    // border: 2px solid black;
+   
+
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // font-weight: bold;
+        font-size: 2em;
+        // font-style: italic;
+        // line-height: 2em;
+        // margin-bottom: 1em;
+        text-decoration: underline;
+    }
 
     .topper {
-        flex-grow: 1;
+        // flex-grow: 1;
         display: flex;
         // justify-content: center;
-        // flex-direction: row-reverse;
-        justify-content: center;
+        flex-direction: row-reverse;
+        justify-content: space-around;
         // align-items: stretch;
         background-color: #ffb703;
         border: 2px solid black;
         // padding: 0 1em 0 1em;
         // gap: 3rem;
         position: relative;
+        margin: 0;
+        padding: 0;
+        line-height: 1em;
 
         p {
             display: flex;
             align-items: center;
-            margin: 0;
-            max-width: 25rem;
+            margin: 0.5em;
+            max-width: 60%;
             // flex-grow: 1;
         }
 
         .progress-bars {
+            // background-color: #219ebc;
             // flex-grow: 1;
-            position: absolute;
-            right: 0;
+            // position: absolute;
+            // right: 0;
             // background-color: red;
             // padding: 1rem;
             width: 20%;
@@ -41,7 +63,7 @@
             display: flex;
             flex-direction: column;
             align-items: start;
-            gap: 1em;
+            // gap: 1em;
             justify-content: center;
         }
     }
