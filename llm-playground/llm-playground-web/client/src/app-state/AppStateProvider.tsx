@@ -13,6 +13,7 @@ type AppState = {
     sceneDescription: string;
     innerDialogue: string;
     charactersText: {};
+    charactersProgress: {},
     participants: string[],
     messages: Message[];
 }
@@ -26,6 +27,11 @@ const initAppState: AppState = {
         'Galit': '',
         'Smadar': '',
         'Barak': ''
+    },
+    charactersProgress: {
+        'Galit': 0,
+        'Smadar': 0,
+        'Barak': 0
     },
     participants: ['Lilach', 'Galit'],
     messages: [

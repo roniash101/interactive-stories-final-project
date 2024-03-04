@@ -1,0 +1,49 @@
+.progress-bar {
+    display: flex;
+
+    .name {
+        font-weight: bold;
+        width: 3.5em;
+        padding-right: 1em;
+    }
+
+    .bar {
+        background-color: white;
+        width: 10em;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        border-radius: 6px;
+        padding: 0.3em;
+        // box-shadow:  rgb(255, 255, 255) 3px 3px 6px 0px inset, rgb(255, 255, 255) -3px -3px 6px 1px inset;
+        border: 1px solid black;
+
+        .background {
+            // background-color: lightgray;
+            height: 0.7em;
+            width: 100%;
+            border: 1px solid lightgray;
+            box-shadow:  rgba(199, 199, 197, 0.5) 3px 3px 6px 0px inset, rgb(255, 255, 255) -3px -3px 6px 1px inset;
+        }
+
+        .progress {
+            height: 0.7em;
+            border: 1px solid black;
+        }
+
+        .blue {
+            background-color: cyan;
+            box-shadow:  rgba(1, 255, 56, 0.5) 3px 3px 6px 0px inset, rgb(125, 133, 243) -3px -3px 6px 1px inset;
+        }
+
+        .green {
+            background-color: greenyellow;
+            box-shadow:  rgba(1, 255, 56, 0.5) 3px 3px 6px 0px inset, rgb(3, 105, 42) -3px -3px 6px 1px inset;
+        }
+
+        .red {
+            background-color: orangered;
+            box-shadow:  rgba(255, 238, 0, 0.5) 3px 3px 6px 0px inset, rgb(255, 38, 0) -3px -3px 6px 1px inset;
+        }
+    }
+}

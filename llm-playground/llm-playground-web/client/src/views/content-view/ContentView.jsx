@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SceneView from "../scene-view/SceneView";
+import ProgressBar from "../../components/progress-bar/ProgressBar";
 import FooterButton from "../../components/FooterButton";
 import Characters from "../../story/Characters";
 import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
@@ -25,6 +26,12 @@ const ContentView = () => {
     return (
         <div className="content-view">
             <div className="topper">
+                <div className="progress-bars">
+                {Object.keys(Characters).map((name, i) => (
+                    !Characters[name].isMain ?
+                        <ProgressBar name={name} key={i} /> : null
+                ))}
+                </div>
                 <p>{sceneDescription}</p>
             </div>
 
