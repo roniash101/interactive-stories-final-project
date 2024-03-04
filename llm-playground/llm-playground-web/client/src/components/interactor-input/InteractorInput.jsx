@@ -45,6 +45,7 @@ export default function InteractorInput() {
                 color: getTextColor()
             }}>
             <textarea
+                placeholder="Say something..."
                 value={inputMessage}
                 cols="20"
                 rows="5"

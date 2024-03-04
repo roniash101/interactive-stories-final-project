@@ -4,6 +4,8 @@ import ProgressBar from "../../components/progress-bar/ProgressBar";
 import FooterButton from "../../components/FooterButton";
 import Characters from "../../story/Characters";
 import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
+import TelephoneIcon from "../../assets/telephone.png";
+
 import "./ContentView.scss";
 
 const ContentView = () => {
@@ -28,10 +30,10 @@ const ContentView = () => {
             <div className="title">{title}</div>
             <div className="topper">
                 <div className="progress-bars">
-                {Object.keys(Characters).map((name, i) => (
-                    !Characters[name].isMain ?
-                        <ProgressBar name={name} key={i} /> : null
-                ))}
+                    {Object.keys(Characters).map((name, i) => (
+                        !Characters[name].isMain ?
+                            <ProgressBar name={name} key={i} /> : null
+                    ))}
                 </div>
                 <p>{sceneDescription}</p>
             </div>
@@ -39,14 +41,17 @@ const ContentView = () => {
             <SceneView participants={participants} />
 
             <div className="footer">
+                <img src={TelephoneIcon} />
                 {Object.keys(Characters).map((name, i) => (
                     !Characters[name].isMain ?
                         <FooterButton
                             value={name}
+                            color={Characters[name].backgroundColor}
                             key={i}
                             array={participants}
                             setArray={setParticipants} /> : null
                 ))}
+                <a href="https://www.flaticon.com/free-icons/phone" title="phone icons">Phone icons created by Gregor Cresnar - Flaticon</a>
             </div>
         </div>
     );

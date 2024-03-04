@@ -3,7 +3,7 @@ import { useSendMessage } from "../story/story-logic";
 import { useAppState } from "../app-state/AppStateProvider";
 
 const FooterButton = (props) => {
-    const { value, array, setArray } = props;
+    const { value, color, array, setArray } = props;
     const { status } = useAppState();
     const isLoading = (status === 'text-loading' || status === 'view-loading');
     const [isActive, setIsActive] = useState(false);
@@ -41,6 +41,7 @@ const FooterButton = (props) => {
     return (
         <button
             className={`button ${isActive && "active"}`}
+            style={{"backgroundColor": color}}
             onClick={() => onButtonClick(value)}
             disabled={isLoading}>
             {value}
