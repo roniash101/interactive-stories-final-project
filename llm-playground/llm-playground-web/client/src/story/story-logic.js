@@ -129,7 +129,12 @@ export function useHandleStoryResponse() {
 
         setTimeout(() => {
             if (response.LilachInnerDialogue && response.callToAction) {
-                setAppState({ innerDialogue: response.LilachInnerDialogue + " " + response.callToAction });
+                let newInnerDialogue = response.LilachInnerDialogue;
+                if (!isVictory) {
+                    newInnerDialogue += " " + response.callToAction;
+                }
+
+                setAppState({ innerDialogue: newInnerDialogue });
             }
         }, 500)
     }

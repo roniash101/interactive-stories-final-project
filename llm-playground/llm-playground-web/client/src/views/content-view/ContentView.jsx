@@ -38,7 +38,12 @@ const ContentView = () => {
 
     return (
         <div className="content-view">
-            <div className="title">{title}</div>
+            <div className="title">
+                <div className="container">
+                    <h1>{title}</h1>
+                    <p className="author">by Roni Ashkenazi</p>
+                </div>
+            </div>
             <div className="topper">
                 {state == 'middle' && <div className="progress-bars">
                     {Object.keys(Characters).map((name, i) => (
