@@ -4,7 +4,7 @@ import "./interactor-input.css";
 
 export default function InteractorInput() {
 
-    const { status, inputMessage, participants } = useAppState();
+    const { state, isVictory, status, inputMessage, participants } = useAppState();
     const isLoading = (status === 'text-loading' || status === 'view-loading');
     const setAppState = useSetAppState();
 
@@ -49,7 +49,7 @@ export default function InteractorInput() {
                 value={inputMessage}
                 cols="20"
                 rows="5"
-                disabled={isLoading}
+                disabled={isLoading || state != 'middle' || isVictory}
                 style={{ "color": getTextColor() }}
                 onKeyDown={onKeyDown}
                 onChange={e => setAppState({ inputMessage: e.target.value })}

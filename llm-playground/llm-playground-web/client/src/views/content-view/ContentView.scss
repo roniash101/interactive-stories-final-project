@@ -65,6 +65,14 @@
                 border: 2px solid black;
             }
         }
+
+        .end-scene {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
     }
 
     .footer {
@@ -80,7 +88,7 @@
             margin-right: 0.5em;
         }
 
-        .button {
+        .button, .continue-button {
             padding: 0.25em 0.75em 0.25em 0.75em;
             margin: 0.5em;
             display: flex;
@@ -102,6 +110,18 @@
 
         .active:hover {
             background-color: rgb(197, 248, 120) !important;
+        }
+
+        .continue-button {
+            background-color: pink;
+        }
+
+        .continue-button:hover {
+            background-color: rgb(252, 222, 227);
+        }
+
+        .continue-button:active {
+            background-color: rgb(250, 119, 141);
         }
 
         a {

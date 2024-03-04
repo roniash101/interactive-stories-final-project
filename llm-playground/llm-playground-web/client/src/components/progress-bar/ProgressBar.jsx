@@ -3,8 +3,8 @@ import "./ProgressBar.scss";
 
 const ProgressBar = (props) => {
     const { name } = props;
-    const { charactersProgress } = useAppState();
-    const precent = charactersProgress[name] * 100;
+    const { goalProgress } = useAppState();
+    const precent = goalProgress[name] * 100;
     const nonZeroPrecent = precent != 0 ? precent : 5;
 
     const getColor = () => {

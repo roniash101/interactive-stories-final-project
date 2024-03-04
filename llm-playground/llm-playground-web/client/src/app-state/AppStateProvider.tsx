@@ -9,21 +9,23 @@ export type Message = {
 
 type AppState = {
     state: 'start' | 'middle' | 'end',
+    isVictory: boolean,
     title: string,
     sceneDescription: string;
     status: 'idle' | 'text-loading' | 'view-loading' | 'error';
-    inputMessage: '';
+    inputMessage: string; //
     innerDialogue: string;
     charactersText: {};
-    charactersProgress: {},
+    goalProgress: {},
     participants: string[],
     messages: Message[];
 }
 
 const initAppState: AppState = {
     state: 'start',
+    isVictory: false,
     title: storyConfig.name,
-    sceneDescription: storyConfig.sceneDescription,
+    sceneDescription: storyConfig.startSceneDescription,
     status: 'idle',
     inputMessage: '',
     innerDialogue: storyConfig.innerDialogue,
@@ -32,7 +34,7 @@ const initAppState: AppState = {
         'Smadar': '',
         'Barak': ''
     },
-    charactersProgress: { // todo: change to 0
+    goalProgress: {
         'Galit': 0,
         'Smadar': 0,
         'Barak': 0

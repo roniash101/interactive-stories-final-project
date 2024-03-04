@@ -58,10 +58,6 @@ export function useSendMessage() {
                 handleResponse(newMessages, storytellerResponse);
                 onSent();
 
-                // if (storytellerResponse.currentKeyGoalIndex >= 3 && storytellerResponse.isCurrentKeyGoalCompleted) {
-                //     setIsEnd(true);
-                // }
-
             } catch { err => { throw err } }
         }).catch(err => {
             console.error('Api error. Details: ', err);
@@ -74,7 +70,7 @@ export function useSendMessage() {
 }
 
 export function useHandleStoryResponse() {
-    const { inputMessage, charactersText } = useAppState();
+    const { inputMessage, goalProgress } = useAppState();
     const setAppState = useSetAppState();
 
     function handleStoryResponse(messages, response) {
@@ -106,11 +102,30 @@ export function useHandleStoryResponse() {
             newChatactersText.Barak = response.barakText;
         }
 
-        setAppState({ charactersText: { ...newChatactersText } });
+        const newGoalProgress = { ...goalProgress };
+        let isVictory = false;
 
-        // const newMessages = [...messages];
-        // newMessages.push({ role: 'assistant', content: response.characterText });
-        // setAppState({ messages: [...newMessages] }); // todo: update scene description?
+        if (response.galitGoalProgress) {
+            newGoalProgress.Galit = response.galitGoalProgress;
+        }
+
+        if (response.smadarGoalProgress) {
+            newGoalProgress.Smadar = response.smadarGoalProgress;
+        }
+
+        if (response.barakGoalProgress) {
+            newGoalProgress.Barak = response.barakGoalProgress;
+        }
+
+        if (newGoalProgress.Galit == 1 & newGoalProgress.Smadar == 1 && newGoalProgress.Barak == 1) {
+            isVictory = true;
+        }
+
+        setAppState({
+            charactersText: { ...newChatactersText },
+            newGoalProgress: { ...newGoalProgress },
+            isVictory
+        });
 
         setTimeout(() => {
             if (response.LilachInnerDialogue && response.callToAction) {
