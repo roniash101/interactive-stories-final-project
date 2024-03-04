@@ -14,15 +14,18 @@ const CharacterView = (props) => {
     useEffect(() => {
         if (chatacter.isMain) return;
 
-        if (charactersText[name] != null)
-        {
+        if (charactersText[name] != null) {
             setText(charactersText[name]);
         }
-        
+
     }, [charactersText])
 
     return (
         <div className="character-view" style={{ "backgroundColor": chatacter.backgroundColor }}>
+            <div className={`online ${chatacter.isMain && "empty"}`}>
+                <div className="dot" />
+                {name} is online
+            </div>
             <div className="character-parent">
                 <img className="character" src={chatacter.image} />
             </div>

@@ -5,11 +5,43 @@
     min-width: 23rem;
     overflow: hidden;
 
+    .online {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        // align-self:first baseline baseline;
+        // justify-self: start !important;
+        margin: 0.5em auto auto 0.5em;
+        // margin-top: 0;
+        // margin-left: 0;
+        color: black;
+        font-size: larger;
+
+        .dot {
+            height: 0.25em;
+            width: 0.25em;
+            margin-right: 0.25em;
+            background-color: greenyellow;
+            border-radius: 50%;
+            border: black solid 3px;
+        }
+    }
+
+    .empty {
+        color: transparent;
+
+        .dot {
+            color: transparent;
+            background-color: transparent;
+            border: transparent solid 3px;
+        }
+    }
+
     .character-parent {
         position: absolute;
         max-width: 23rem;
         height: 100%;
-        
+
         .character {
             // padding-top: 3rem;
         }

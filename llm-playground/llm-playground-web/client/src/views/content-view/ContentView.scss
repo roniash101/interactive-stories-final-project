@@ -68,7 +68,6 @@
     }
 
     .footer {
-        flex-grow: 1;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -77,27 +76,28 @@
         border: 2px solid black;
 
         .button {
-            height: 50%;
-            padding-left: 20px;
-            padding-right: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
+            padding: 0.25em 0.75em 0.25em 0.75em;
+            margin: 0.5em;
             display: flex;
             align-items: center;
             background-color: white;
             border-radius: 15px;
         }
 
-        .active {
-            text-decoration: underline;
-        }
-
         .button:hover {
-            background-color: lightgreen;
+            background-color: rgb(236, 236, 236);
         }
 
         .button:active {
             background-color: greenyellow;
+        }
+
+        .active {
+            background-color: greenyellow;
+        }
+
+        .active:hover {
+            background-color: rgb(197, 248, 120) !important;
         }
     }
 }
