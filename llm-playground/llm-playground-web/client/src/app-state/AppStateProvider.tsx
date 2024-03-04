@@ -8,6 +8,7 @@ export type Message = {
 }
 
 type AppState = {
+    state: 'start' | 'middle' | 'end',
     title: string,
     sceneDescription: string;
     status: 'idle' | 'text-loading' | 'view-loading' | 'error';
@@ -20,11 +21,12 @@ type AppState = {
 }
 
 const initAppState: AppState = {
+    state: 'start',
     title: storyConfig.name,
     sceneDescription: storyConfig.sceneDescription,
     status: 'idle',
     inputMessage: '',
-    innerDialogue: '',
+    innerDialogue: storyConfig.innerDialogue,
     charactersText: {
         'Galit': '',
         'Smadar': '',
@@ -35,7 +37,7 @@ const initAppState: AppState = {
         'Smadar': 0,
         'Barak': 0
     },
-    participants: ['Lilach', 'Galit'],
+    participants: ['Lilach'],
     messages: [
         { role: 'system', content: storyConfig.instructions },
         // { role: 'system', content: "SYSTEM: Lilach has Joined the conversation" },

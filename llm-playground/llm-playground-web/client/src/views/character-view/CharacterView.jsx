@@ -8,7 +8,7 @@ const CharacterView = (props) => {
     const { name } = props;
     const chatacter = Characters[name];
 
-    const { innerDialogue, status, charactersText } = useAppState();
+    const { innerDialogue, status, charactersText, participants } = useAppState();
     const [text, setText] = useState('');
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const CharacterView = (props) => {
             {/* <div className="bubbles-parent"> */}
             {chatacter.isMain ?
                 <>
-                    <Bubble isModeSpeak={true} enableInput={true} />
+                    {participants.length != 1 && <Bubble isModeSpeak={true} enableInput={true} />}
                     <Bubble isModeSpeak={false} text={innerDialogue} />
                 </>
                 :

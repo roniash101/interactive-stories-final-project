@@ -10,25 +10,29 @@ export const Characters = {
         name: "Lilach",
         image: Character3,
         backgroundColor: "#ccd5ae",
-        isMain: true
+        isMain: true,
+        isInitialCall: false
     },
     Smadar: {
         name: "Smadar",
         image: Character4, 
         backgroundColor: "#fefae0",
-        isMain: false
+        isMain: false,
+        isInitialCall: false
     },
     Galit: {
         name: "Galit",
         image: Character2,
         backgroundColor: "#f8ad9d",
-        isMain: false
+        isMain: false,
+        isInitialCall: true
     },
     Barak: {
         name: "Barak",
         image: Character1,
         backgroundColor: "#faedcd",
-        isMain: false
+        isMain: false,
+        isInitialCall: false
     }
 };
 

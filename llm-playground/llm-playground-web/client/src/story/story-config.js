@@ -143,10 +143,9 @@ const STORY_CONFIG_1 = {
 `,
 sceneDescription:
 `
-Toady Lilach is finally going to the Hadorbanim's concert with Smadar and Galit, her two best friends, and she is very excited.
-She was just about to call Smadar to make sure she took care of the tickets when her phone rang.
-`,
-callToAction: '',
+Today is the day! After a few long weeks of anticipation, Lilach and her two best friends, Smadar and Galit, are finally going to see the concert of 
+their favorite band: Hadorbanim. It is going to be absolutly amazing.`,
+innerDialogue: `I should probably start getting ready to the concert, but what should I wear? maybe I'll call Galit and ask her what she is wearing...`,
 };
 
 export default STORY_CONFIG_1;

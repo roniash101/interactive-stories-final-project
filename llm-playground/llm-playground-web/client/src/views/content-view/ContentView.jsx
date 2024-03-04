@@ -9,13 +9,17 @@ import TelephoneIcon from "../../assets/telephone.png";
 import "./ContentView.scss";
 
 const ContentView = () => {
-    const { title, sceneDescription, participants } = useAppState();
+    const { state, title, sceneDescription, participants } = useAppState();
     const setAppState = useSetAppState();
     // const [participants, setParticipants] = useState(["Lilach"]); //todo: add phone ring etc..
 
     // useEffect(() => {
     //     setAppState(participants);
     // }, [participants]);
+
+    const isButtonDisabled = (name) => {
+        return state == 'start' && !Characters[name].isInitialCall;
+    }
 
     const setParticipants = (value) => {
         setAppState({ participants: value });
@@ -29,12 +33,12 @@ const ContentView = () => {
         <div className="content-view">
             <div className="title">{title}</div>
             <div className="topper">
-                <div className="progress-bars">
+                {state == 'middle' && <div className="progress-bars">
                     {Object.keys(Characters).map((name, i) => (
                         !Characters[name].isMain ?
                             <ProgressBar name={name} key={i} /> : null
                     ))}
-                </div>
+                </div>}
                 <p>{sceneDescription}</p>
             </div>
 
@@ -46,6 +50,7 @@ const ContentView = () => {
                     !Characters[name].isMain ?
                         <FooterButton
                             value={name}
+                            disabled={isButtonDisabled(name)}
                             color={Characters[name].backgroundColor}
                             key={i}
                             array={participants}
