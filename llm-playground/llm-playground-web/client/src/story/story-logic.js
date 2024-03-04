@@ -123,7 +123,7 @@ export function useHandleStoryResponse() {
 
         setAppState({
             charactersText: { ...newChatactersText },
-            newGoalProgress: { ...newGoalProgress },
+            goalProgress: { ...newGoalProgress },
             isVictory
         });
 
