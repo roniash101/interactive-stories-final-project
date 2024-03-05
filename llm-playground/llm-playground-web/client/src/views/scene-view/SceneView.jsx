@@ -3,6 +3,7 @@ import { useAppState } from "../../app-state/AppStateProvider";
 import CharacterView from "../character-view/CharacterView";
 import Characters from "../../story/Characters";
 import ConcertImage from "../../assets/concert.png";
+import Confetti from "../../assets/confetti2.gif";
 
 const SceneView = (props) => {
     const { participants } = props;
@@ -13,6 +14,7 @@ const SceneView = (props) => {
             {state == 'end' ?
                 <div className="end-scene">
                     <img className="character" src={ConcertImage} />
+                    <img className="confetti" src={Confetti} />
                     <h2>The End.</h2>
                 </div>
                 :
