@@ -26,7 +26,7 @@ const Bubble = (props) => {
                             <p className="text">
                                 {isLoading ? <LoadingDots /> : text}
                             </p>
-                            : <InteractorInput />}
+                            : <InteractorInput disabled={true}/>}
                     </div>
                 </>}
         </div>

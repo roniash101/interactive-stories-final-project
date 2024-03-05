@@ -2,8 +2,9 @@ import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
 import { useSendMessage } from "../../story/story-logic";
 import "./interactor-input.css";
 
-export default function InteractorInput() {
+export default function InteractorInput(props) {
 
+    const {disabled} = props;
     const { state, isVictory, status, inputMessage, participants } = useAppState();
     const isLoading = (status === 'text-loading' || status === 'view-loading');
     const setAppState = useSetAppState();
@@ -48,8 +49,8 @@ export default function InteractorInput() {
                 placeholder="Say something..."
                 value={inputMessage}
                 cols="20"
-                rows="5"
-                disabled={isLoading || state != 'middle' || isVictory}
+                rows="6"
+                disabled={isLoading || state != 'middle' || isVictory || disabled}
                 style={{ "color": getTextColor() }}
                 onKeyDown={onKeyDown}
                 onChange={e => setAppState({ inputMessage: e.target.value })}
