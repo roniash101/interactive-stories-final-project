@@ -12,13 +12,23 @@ const Bubble = (props) => {
 
     return (
         <div className="bubbles-parent">
-            {isRender && <div className={"bubble " + className}>
-                {hasText ?
-                    <p className="text">
-                        {isLoading ? <LoadingDots /> : text}
-                    </p>
-                    : <InteractorInput />}
-            </div>}
+            {isRender &&
+                <>
+                    <div className={"bubble " + className}>
+                        {hasText ?
+                            <p className="text">
+                                {isLoading ? <LoadingDots /> : text}
+                            </p>
+                            : <InteractorInput />}
+                    </div>
+                    <div className={"dummy " + className + "-dummy " + className}>
+                        {hasText ?
+                            <p className="text">
+                                {isLoading ? <LoadingDots /> : text}
+                            </p>
+                            : <InteractorInput />}
+                    </div>
+                </>}
         </div>
     );
 }

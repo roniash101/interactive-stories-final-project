@@ -4,12 +4,15 @@
     height: 100%;
     z-index: 1;
 
-    .bubble {
-        min-width: 8rem; //todo: change to 8
+    .bubble,
+    .dummy {
+        min-width: 8rem;
         max-width: 10rem;
         position: absolute;
         top: 1rem;
         background-color: white;
+        z-index: 1;
+        border-radius: .4em;
 
         .text {
             line-height: 1em;
@@ -37,5 +40,57 @@
     .thinking-bubble {
         right: 5rem;
         border: black dashed 2px;
+    }
+
+    .thinking-bubble:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-left-color: white;
+        border-right: 0;
+        border-bottom: 0;
+        margin-top: -10px;
+        margin-right: -20px;
+    }
+
+    .speaking-bubble:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-right-color: white;
+        border-left: 0;
+        border-bottom: 0;
+        margin-top: -10px;
+        margin-left: -20px;
+    }
+
+    .dummy {
+        z-index: 0 !important;
+    }
+
+    .speaking-bubble-dummy:after {
+        border: 25px solid transparent;
+        border-right-color: black;
+        border-left: 0;
+        border-bottom: 0;
+        margin-top: -12.5px;
+        margin-left: -25px;
+    }
+
+    .thinking-bubble-dummy:after {
+        border: 25px solid transparent;
+        border-left-color: black;
+        border-right: 0;
+        border-bottom: 0;
+        margin-top: -12.5px;
+        margin-right: -25px;
     }
 }
