@@ -158,14 +158,14 @@ const STORY_CONFIG_1 = {
 startSceneDescription:
 `
 Today is the day! After a few long weeks of anticipation, Lilach and her two best friends, Smadar and Galit, are finally going to see the concert of 
-their favorite band: Hadorbanim. It is going to be absolutly amazing.
+their favorite band: Hadorbanim. It is 5pm and Lilach should start getting ready for the concert.
 `,
 endSceneDescription:
 `
 So, after a lot of ups and downs, the drama was finally solved. The trio had managed to put all the bad energy aside and ended up having a blast at the concert.
 All's well that ends well... until the next drama!
 `,
-innerDialogue: `I should probably start getting ready to the concert, but what should I wear? maybe I'll call Galit and ask her what she is wearing...`,
+innerDialogue: `What should I wear? Maybe I'll call Galit and ask her what she is wearing...`,
 };
 
 export default STORY_CONFIG_1;
