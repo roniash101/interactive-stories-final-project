@@ -156,15 +156,11 @@ const STORY_CONFIG_1 = {
     - The chracters should be responsive according to the other currenly present charactes in the conversation. They can talk to each other as well.
 `,
 startSceneDescription:
-`
-Today is the day! After a few long weeks of anticipation, Lilach and her two best friends, Smadar and Galit, are finally going to see the concert of 
-their favorite band: Hadorbanim. It is 5pm and Lilach should start getting ready for the concert.
-`,
+`Today is the day! After a few long weeks of anticipation, Lilach and her two best friends, Smadar and Galit, are finally going to see the concert of their favorite band: Hadorbanim.
+It is 5pm and Lilach should start getting ready for the concert.`,
 endSceneDescription:
-`
-So, after a lot of ups and downs, the drama was finally solved. The trio had managed to put all the bad energy aside and ended up having a blast at the concert.
-All's well that ends well... until the next drama!
-`,
+`So, after a lot of ups and downs, the drama was finally solved. The trio had managed to put all the bad energy aside and ended up having a blast at the concert.
+All's well that ends well... until the next drama!`,
 innerDialogue: `What should I wear? Maybe I'll call Galit and ask her what she is wearing...`,
 };
 

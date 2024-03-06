@@ -13,7 +13,7 @@ const SceneView = (props) => {
         <div className="scene-view">
             {state == 'end' ?
                 <div className="end-scene">
-                    <img className="character" src={ConcertImage} />
+                    <img className="concert" src={ConcertImage} />
                     <img className="confetti" src={Confetti} />
                     <h2>The End.</h2>
                 </div>

@@ -89,10 +89,14 @@
             background-color: pink;
             position: relative;
 
+            .concert {
+                height: 100%;
+            }
+
             .confetti {
                 position: absolute;
                 // top: 4em;
-                width: 100%;
+                width: 50%;
                 height: 100%;
             }
         }
