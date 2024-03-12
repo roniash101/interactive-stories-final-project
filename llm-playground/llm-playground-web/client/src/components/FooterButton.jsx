@@ -8,7 +8,7 @@ const FooterButton = (props) => {
     const setAppState = useSetAppState();
     const isLoading = (status === 'text-loading' || status === 'view-loading');
     const [isActive, setIsActive] = useState(false);
-    const sendMessage = useSendMessage();
+    // const sendMessage = useSendMessage();
 
     useEffect(() => {
         if (array.indexOf(value) != -1) setIsActive(true);

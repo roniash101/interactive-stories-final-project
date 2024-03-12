@@ -5,7 +5,7 @@ import "./interactor-input.css";
 export default function InteractorInput(props) {
 
     const {disabled} = props;
-    const { state, isVictory, status, inputMessage, participants } = useAppState();
+    const { state, isVictory, status, inputMessage, participants, goalProgress } = useAppState();
     const isLoading = (status === 'text-loading' || status === 'view-loading');
     const setAppState = useSetAppState();
 
@@ -18,7 +18,7 @@ export default function InteractorInput(props) {
 
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
-            sendMessage(message, participants, onMessageSent);
+            sendMessage(message, participants, goalProgress, onMessageSent);
             setAppState({ innerDialogue: '' });
         }
     }

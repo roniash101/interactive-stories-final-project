@@ -8,7 +8,7 @@ export function useSendMessage() {
     const setAppState = useSetAppState();
     const handleResponse = useHandleStoryResponse();
 
-    const send = useCallback((message, participants, onSent) => {
+    const send = useCallback((message, participants, goalProgress, onSent) => {
 
         let loadingType = message.role == 'user' ? 'text-loading' : 'view-loading';
         // let reminder = message.role == 'user' ?
@@ -55,7 +55,7 @@ export function useSendMessage() {
                 storytellerResponse = JSON.parse(storytellerResponse);
 
                 setAppState({ status: 'idle' });
-                handleResponse(newMessages, storytellerResponse);
+                handleResponse(newMessages, storytellerResponse, participants, goalProgress);
                 onSent();
 
             } catch { err => { throw err } }
@@ -70,10 +70,10 @@ export function useSendMessage() {
 }
 
 export function useHandleStoryResponse() {
-    const { inputMessage, goalProgress } = useAppState();
+    // const { inputMessage, goalProgress, participants } = useAppState();
     const setAppState = useSetAppState();
 
-    function handleStoryResponse(messages, response) {
+    function handleStoryResponse(messages, response, participants, goalProgress) {
         if (!response) return;
 
         /* 
@@ -84,6 +84,7 @@ export function useHandleStoryResponse() {
         */
         console.log("response", response);
 
+        // handle character's text
         const newChatactersText = {
             Galit: '',
             Smadar: '',
@@ -102,18 +103,19 @@ export function useHandleStoryResponse() {
             newChatactersText.Barak = response.barakText;
         }
 
+        // handle goal progress
         let newGoalProgress = { ...goalProgress };
         let isVictory = false;
 
-        if (response.galitGoalProgress && response.galitGoalProgress != 0) {
+        if (participants.includes(Characters.Galit.name) && response.galitGoalProgress != undefined) { //  && response.galitGoalProgress != 0
             newGoalProgress.Galit = response.galitGoalProgress;
         }
 
-        if (response.smadarGoalProgress && response.smadarGoalProgress != 0) {
+        if (participants.includes(Characters.Smadar.name) && response.smadarGoalProgress != undefined) { // && response.smadarGoalProgress != 0
             newGoalProgress.Smadar = response.smadarGoalProgress;
         }
 
-        if (response.barakGoalProgress && response.barakGoalProgress != 0) {
+        if (participants.includes(Characters.Barak.name) && response.barakGoalProgress != undefined) { // && response.barakGoalProgress != 0
             newGoalProgress.Barak = response.barakGoalProgress;
         }
 

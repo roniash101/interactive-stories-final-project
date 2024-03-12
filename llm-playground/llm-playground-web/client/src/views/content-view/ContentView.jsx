@@ -51,7 +51,7 @@ const ContentView = () => {
                             <ProgressBar name={name} key={i} /> : null
                     ))}
                 </div>}
-                <p style={{"white-space": "pre-line"}}>{sceneDescription}</p>
+                <p style={{"whiteSpace": "pre-line"}}>{sceneDescription}</p>
             </div>
 
             <SceneView participants={participants} />
