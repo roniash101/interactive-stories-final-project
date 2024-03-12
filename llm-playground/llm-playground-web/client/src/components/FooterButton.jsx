@@ -45,7 +45,7 @@ const FooterButton = (props) => {
 
     return (
         <button
-            className={`button ${isActive && "active"}`}
+            className={`button ${isActive && "active"} ${!(disabled || isLoading) && "enabled"}`}
             style={{"backgroundColor": color}}
             onClick={() => onButtonClick(value)}
             disabled={disabled || isLoading}>

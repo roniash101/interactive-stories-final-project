@@ -46,6 +46,7 @@ export default function InteractorInput(props) {
                 color: getTextColor()
             }}>
             <textarea
+                autoFocus
                 placeholder="Say something..."
                 value={inputMessage}
                 cols="20"

@@ -59,6 +59,7 @@
             flex-direction: column;
             align-items: start;
             justify-content: center;
+            // border: 1px solid black;
         }
     }
 
@@ -124,11 +125,11 @@
             border-radius: 15px;
         }
 
-        .button:hover {
+        .enabled:hover {
             background-color: whitesmoke !important;
         }
 
-        .button:active {
+        .enabled:active {
             background-color: greenyellow !important;
         }
 

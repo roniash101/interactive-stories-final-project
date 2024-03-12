@@ -9,28 +9,28 @@ export const Characters = {
     Lilach: {
         name: "Lilach",
         image: Character3,
-        backgroundColor: "#ccd5ae",
+        backgroundColor: 'rgb(255 239 192)', //'#F9EDCB', //"#ccd5ae",
         isMain: true,
         isInitialCall: false
     },
     Smadar: {
         name: "Smadar",
         image: Character4, 
-        backgroundColor: "#fefae0",
+        backgroundColor: "#F7D9C4", //"#fefae0",
         isMain: false,
         isInitialCall: false
     },
     Galit: {
         name: "Galit",
         image: Character2,
-        backgroundColor: "#f8ad9d",
+        backgroundColor: 'rgb(183 239 228)', //"#C9E3DE", //"#f8ad9d",
         isMain: false,
         isInitialCall: true
     },
     Barak: {
         name: "Barak",
         image: Character1,
-        backgroundColor: "#faedcd",
+        backgroundColor: "#DCCEE5", //"#faedcd",
         isMain: false,
         isInitialCall: false
     }

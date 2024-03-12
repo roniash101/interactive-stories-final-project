@@ -11,7 +11,7 @@ import "./ContentView.scss";
 const ContentView = () => {
     const { state, isVictory, title, sceneDescription, participants } = useAppState();
     const setAppState = useSetAppState();
-    // const [participants, setParticipants] = useState(["Lilach"]); //todo: add phone ring etc..
+    // const [participants, setParticipants] = useState(["Lilach"]);
 
     // useEffect(() => {
     //     setAppState(participants);
