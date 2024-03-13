@@ -8,7 +8,6 @@ const FooterButton = (props) => {
     const setAppState = useSetAppState();
     const isLoading = (status === 'text-loading' || status === 'view-loading');
     const [isActive, setIsActive] = useState(false);
-    // const sendMessage = useSendMessage();
 
     useEffect(() => {
         if (array.indexOf(value) != -1) setIsActive(true);
@@ -21,25 +20,20 @@ const FooterButton = (props) => {
 
     const onButtonClick = (value) => {
         if (state == 'start') {
-            setAppState({state: 'middle'});
+            setAppState({interactionEnabled: true});
+            // setAppState({state: 'middle'});
         }
 
         if (!isActive) {
             setIsActive(true);
-
-            // sendMessage({ role: 'system', content: formatNotification() }, () => {
-                setArray([...array, value]);
-            // });
+            setArray([...array, value]);
         }
         else {
             let copyArray = [...array];
             let index = copyArray.indexOf(value);
             copyArray.splice(index, 1);
             setIsActive(false);
-
-            // sendMessage({ role: 'system', content: formatNotification() }, () => {
-                setArray(copyArray)
-            // });
+            setArray(copyArray)
         }
     }
 

@@ -2,13 +2,14 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppState, useSetAppState } from '../app-state/AppStateProvider';
 import { SETTINGS } from '../../settings';
 import Characters from './Characters';
+import storyConfig from './story-config';
 
 export function useSendMessage() {
     const { messages, status } = useAppState();
     const setAppState = useSetAppState();
     const handleResponse = useHandleStoryResponse();
 
-    const send = useCallback((message, participants, goalProgress, onSent) => {
+    const send = useCallback((message, participants, goalProgress, state, onSent) => {
 
         let loadingType = message.role == 'user' ? 'text-loading' : 'view-loading';
         // let reminder = message.role == 'user' ?
@@ -55,7 +56,7 @@ export function useSendMessage() {
                 storytellerResponse = JSON.parse(storytellerResponse);
 
                 setAppState({ status: 'idle' });
-                handleResponse(newMessages, storytellerResponse, participants, goalProgress);
+                handleResponse(newMessages, storytellerResponse, participants, state, goalProgress);
                 onSent();
 
             } catch { err => { throw err } }
@@ -70,10 +71,9 @@ export function useSendMessage() {
 }
 
 export function useHandleStoryResponse() {
-    // const { inputMessage, goalProgress, participants } = useAppState();
     const setAppState = useSetAppState();
 
-    function handleStoryResponse(messages, response, participants, goalProgress) {
+    function handleStoryResponse(messages, response, participants, state, goalProgress) {
         if (!response) return;
 
         /* 
@@ -93,6 +93,13 @@ export function useHandleStoryResponse() {
 
         if (response.galitText) {
             newChatactersText.Galit = response.galitText;
+
+            if (state != 'middle' && response.galitText.includes("tickets")) {
+                setAppState({
+                    state: 'middle',
+                    sceneDescription: storyConfig.middleSceneDescription
+                });
+            }
         }
 
         if (response.smadarText) {
@@ -107,15 +114,15 @@ export function useHandleStoryResponse() {
         let newGoalProgress = { ...goalProgress };
         let isVictory = false;
 
-        if (participants.includes(Characters.Galit.name) && response.galitGoalProgress != undefined) { //  && response.galitGoalProgress != 0
+        if (participants.includes(Characters.Galit.name) && response.galitGoalProgress != undefined) {
             newGoalProgress.Galit = response.galitGoalProgress;
         }
 
-        if (participants.includes(Characters.Smadar.name) && response.smadarGoalProgress != undefined) { // && response.smadarGoalProgress != 0
+        if (participants.includes(Characters.Smadar.name) && response.smadarGoalProgress != undefined) {
             newGoalProgress.Smadar = response.smadarGoalProgress;
         }
 
-        if (participants.includes(Characters.Barak.name) && response.barakGoalProgress != undefined) { // && response.barakGoalProgress != 0
+        if (participants.includes(Characters.Barak.name) && response.barakGoalProgress != undefined) {
             newGoalProgress.Barak = response.barakGoalProgress;
         }
 
@@ -132,7 +139,7 @@ export function useHandleStoryResponse() {
         setTimeout(() => {
             if (response.LilachInnerDialogue && response.callToAction) {
                 let newInnerDialogue = response.LilachInnerDialogue;
-                if (!isVictory) {
+                if (!isVictory && Math.random() > 0.6) {
                     newInnerDialogue += " " + response.callToAction;
                 }
 

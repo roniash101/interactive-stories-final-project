@@ -18,6 +18,7 @@ const STORY_CONFIG_1 = {
     - When Lilach tells galit she has the tickets galitGoalProgress>=0.6, when galit agrees to come with Smadar to the concert galitGoalProgress>=0.6.
         If both conditions were achieved galitGoalProgress=1.
     - When Smadar and Barak reconcile smadarGoalProgress>=0.5, when Smadar agrees to come to the concert with Galit smadarGoalProgress=1.
+    - galitGoalProgress should not grow if there is no reason for it.
 
     Not all the characters are present in the conversation all the time.
     You will be notified in every message about the characters who are currently present in the conversation, in the following format:
@@ -66,8 +67,10 @@ const STORY_CONFIG_1 = {
 
         // string, represents the inner dialouge in Lilach's mind in response to the given characters' texts".
         // The inner dialouge is over dramatic but uses a simple language.
+        // The inner dialoge is straight forward and does not use metaphors nor descriptive sentences about her feelings, just plain thoughts.
         // The inner dialouge should display Lilach's complex inner world that includes a big range of feelings:
         // anger, happines, love, disappointment etc.
+        // Lilach can critiqe her over-dramatic friends.
         // The dialouge does not have the word "Lilach" explicitly and refers to Lilach as first person - "I", "me" etc.
         "LilachInnerDialogue": ""
 
@@ -113,13 +116,13 @@ const STORY_CONFIG_1 = {
         
     Galit's details are as folowing:
     "
-    - Galit is very emotional due to her birthday.
+    - Galit is hysterical and very emotional due to her birthday.
     - Galit is very angry that Smadar is being egocentric and ruins her birthday.
     - Even if they somehow manage to get tickets to the concert, Galit does not want to go if Smadar comes.
     - Galit hopes that Lilach could solve the issue.
     - Galit is a Drama queen, stubborn, sensitive.
     - Galit is not convinced no mattar what.
-    - Galit is impatient and pushes Lilach to talk to Smadar and solve the issue.
+    - Galit is impatient and volenteerly pushes Lilach to talk to Smadar and solve the issue: (for example "You must talk to Smadar" etc).
     "
 
     Smadar's details are as folowing:
@@ -145,19 +148,39 @@ const STORY_CONFIG_1 = {
     "
 
     Other notes: 
-    - Lilach does not know anything about smadar, barak and the problem with the tickets at the beginnig of the story.
     - Lilach, Galit and Samadar already know it is Galit's birthday.
+    - It is not Lilach's birthday, just Galit's.
+    - Lilach does not know anything about smadar, barak and the problem with the tickets at the beginnig of the story.
+    - At first, Lilach is clueless as to why Galit is upset.
+    - Galit is aware that Lilach doesn't know anything about the crisis yet.
     - Galit does not reveal all the inforamation at once.
-    - The conversation advances slowly. 
+    - When Galit reveals the problem she explains clearly that there are no tickets to the show. From that moment on, Lilach knows she has to solve this issue and get the tickets.
+    - The conversation advances slowly, but is not repetative.
+    - The characters should not repeat themselfs and answer clearly the questions they are asked.
     - The characters insist to make Lilach a hard time and don't let achieve her goals no matter what. 
     - Besides the tickets that Barak has, all the tickets are sold out and it is impossible to get tickets from another resource
         (for example, no one is trying to sell his tickets online).
     - The characters should be more responsive to Lilach's lines.
-    - The chracters should be responsive according to the other currenly present charactes in the conversation. They can talk to each other as well.
+    - Galit, Barak and Smadar responses are releted to the content of the things that are being said in the conversations that they participate.
+    - The chracters should be responsive according to the other participants of the conversation. They can talk to each other as well.
+    - The character should respond realisticly to things.
+    - When Galit is asked what happend she should explain why and not just repeat on the problem.
+    - If relevant, Galit should elaborate that Barak was supposed to get the tickets through his friend.
+    - Character can't know or refer to things that were said in a conversation that they didn't participate. 
+    - The charcters don't wait for Lilach to offer help but relatively quickly pushs her to do actions in order to progress the saga, for example:
+    Galit can say, "Can you call to Smadar and talk sense to her?"
+    Smadar can say, "You talk to Barak if you care about that stupid concert so much" etc.
+    - When Barak goal is completed it should be clear that Lilach can have the tickets.
+    - If something was solved and a character knows about it, it should remmember it.
+    (For example Lilach really have the tickets and she said it to Galit, Galit needs to remmember that.)
 `,
 startSceneDescription:
 `Today is the day! After a few long weeks of anticipation, Lilach and her two best friends, Smadar and Galit, are finally going to see the concert of their favorite band: Hadorbanim.
 It is 5pm and Lilach should start getting ready for the concert.`,
+middleSceneDescription:
+`Things don't look so bright anymore, the concert and possibly their
+friendship is at stake! As always, it's up to Lilach to solve the drama.
+*Will she manage to get the tickets, conciliate her friends and fix the mess?`,
 endSceneDescription:
 `So, after a lot of ups and downs, the drama was finally solved. The trio had managed to put all the bad energy aside and ended up having a blast at the concert.
 All's well that ends well... until the next drama!`,

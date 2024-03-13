@@ -4,11 +4,12 @@ import storyConfig from '../story/story-config';
 
 export type Message = {
     role: 'system' | 'user' | 'assistant',
-    content: string, //| 'Lilach'| 'Galit' | 'Barak' | 'Smadar'
+    content: string,
 }
 
 type AppState = {
     state: 'start' | 'middle' | 'end',
+    interactionEnabled: boolean,
     isVictory: boolean,
     title: string,
     sceneDescription: string;
@@ -23,6 +24,7 @@ type AppState = {
 
 const initAppState: AppState = {
     state: 'start',
+    interactionEnabled: false,
     isVictory: false,
     title: storyConfig.name,
     sceneDescription: storyConfig.startSceneDescription,
@@ -42,8 +44,6 @@ const initAppState: AppState = {
     participants: ['Lilach'],
     messages: [
         { role: 'system', content: storyConfig.instructions },
-        // { role: 'system', content: "SYSTEM: Lilach has Joined the conversation" },
-        // { role: 'system', content: "SYSTEM: Galit has Joined the conversation" },
     ],
 }
 

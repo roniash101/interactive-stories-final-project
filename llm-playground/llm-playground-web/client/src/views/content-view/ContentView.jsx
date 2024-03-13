@@ -9,8 +9,10 @@ import storyConfig from '../../story/story-config';
 import "./ContentView.scss";
 
 const ContentView = () => {
-    const { state, isVictory, title, sceneDescription, participants } = useAppState();
+    const { state, isVictory, title, sceneDescription, participants, interactionEnabled } = useAppState();
     const setAppState = useSetAppState();
+    const [plainText, emphasizedText] = sceneDescription.split("*");
+
     // const [participants, setParticipants] = useState(["Lilach"]);
 
     // useEffect(() => {
@@ -18,7 +20,7 @@ const ContentView = () => {
     // }, [participants]);
 
     const isButtonDisabled = (name) => {
-        return state == 'start' && !Characters[name].isInitialCall || state == 'end' || isVictory;
+        return (!interactionEnabled && !Characters[name].isInitialCall) || state == 'end' || isVictory;
     }
 
     const setParticipants = (value) => {
@@ -51,7 +53,9 @@ const ContentView = () => {
                             <ProgressBar name={name} key={i} /> : null
                     ))}
                 </div>}
-                <p style={{"whiteSpace": "pre-line"}}>{sceneDescription}</p>
+                <p className="scene-description"
+                    style={{ "whiteSpace": "pre-line" }}>{plainText}
+                    <em>{emphasizedText}</em></p>
             </div>
 
             <SceneView participants={participants} />
