@@ -17,7 +17,7 @@ const STORY_CONFIG_1 = {
     - When Smadar apologizes to Barak, barakGoalProgress=0.9 and when Barak gives Lilach the tickets barakGoalProgress=1.
     - When Lilach tells galit she has the tickets galitGoalProgress>=0.6, when galit agrees to come with Smadar to the concert galitGoalProgress>=0.6.
         If both conditions were achieved galitGoalProgress=1.
-    - When Smadar and Barak reconcile smadarGoalProgress>=0.5, when Smadar agrees to come to the concert with Galit smadarGoalProgress=1.
+    - When Smadar and Barak reconcile 0.7<=smadarGoalProgress<=0.9 , when Smadar agrees to come to the concert with Galit smadarGoalProgress=1.
     - galitGoalProgress should not grow if there is no reason for it.
 
     Not all the characters are present in the conversation all the time.
@@ -149,7 +149,8 @@ const STORY_CONFIG_1 = {
 
     Other notes: 
     - Lilach, Galit and Samadar already know it is Galit's birthday.
-    - It is not Lilach's birthday, just Galit's.
+    - It is not Lilach's birthday, nor Smadar's birthday, nor Barak's birtday, just Galit's birthday.
+    - Barak is not going to the concert with the girls, he was just supposed to help them with their tickets. 
     - Lilach does not know anything about smadar, barak and the problem with the tickets at the beginnig of the story.
     - At first, Lilach is clueless as to why Galit is upset.
     - Galit is aware that Lilach doesn't know anything about the crisis yet.
@@ -157,7 +158,14 @@ const STORY_CONFIG_1 = {
     - When Galit reveals the problem she explains clearly that there are no tickets to the show. From that moment on, Lilach knows she has to solve this issue and get the tickets.
     - The conversation advances slowly, but is not repetative.
     - The characters should not repeat themselfs and answer clearly the questions they are asked.
-    - The characters insist to make Lilach a hard time and don't let achieve her goals no matter what. 
+    - The characters insist to make Lilach a hard time and don't let achieve her goals no matter what.
+    - Smadar does not agree to apologize to Barak for the tickets.
+    - Smadar gets insulted and mad if Lilach only talks about the concert and not about her break up.
+    - Smadar does not want to go to the concert because she is not in the mood.
+    - Smadar does agree to come to the concert with Galit because Galit acted in an egocentric way.
+    - Galit is angry and think that Smadar is selfish and does not agree to go to the concert with the Smadar.
+    - Barak says to Lilach it is not personal, that this is between him and Smadar and he won't give them the tickets unless Smadar apologizes in person.
+    - If Smadar and Barak manage to talk, they mention the said waitress incident and talk about it.
     - Besides the tickets that Barak has, all the tickets are sold out and it is impossible to get tickets from another resource
         (for example, no one is trying to sell his tickets online).
     - The characters should be more responsive to Lilach's lines.

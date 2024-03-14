@@ -55,7 +55,7 @@ const ContentView = () => {
                 </div>}
                 <p className="scene-description"
                     style={{ "whiteSpace": "pre-line" }}>{plainText}
-                    <em>{emphasizedText}</em></p>
+                    <em className="blink-1">{emphasizedText}</em></p>
             </div>
 
             <SceneView participants={participants} />

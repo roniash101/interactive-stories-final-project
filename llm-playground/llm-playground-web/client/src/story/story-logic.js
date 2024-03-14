@@ -114,15 +114,15 @@ export function useHandleStoryResponse() {
         let newGoalProgress = { ...goalProgress };
         let isVictory = false;
 
-        if (participants.includes(Characters.Galit.name) && response.galitGoalProgress != undefined) {
+        if (participants.includes(Characters.Galit.name) && response.galitGoalProgress != undefined && newGoalProgress.Galit != 1) {
             newGoalProgress.Galit = response.galitGoalProgress;
         }
 
-        if (participants.includes(Characters.Smadar.name) && response.smadarGoalProgress != undefined) {
+        if (participants.includes(Characters.Smadar.name) && response.smadarGoalProgress != undefined && newGoalProgress.Smadar != 1) {
             newGoalProgress.Smadar = response.smadarGoalProgress;
         }
 
-        if (participants.includes(Characters.Barak.name) && response.barakGoalProgress != undefined) {
+        if (participants.includes(Characters.Barak.name) && response.barakGoalProgress != undefined && newGoalProgress.Barak != 1) {
             newGoalProgress.Barak = response.barakGoalProgress;
         }
 
